@@ -1,0 +1,30 @@
+{
+  "name": "wfp2025",
+  "version": "1.0.0",
+  "description": "Web Framework Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heli23011/wfp2025.git"
+  },
+  "author": "Henna-Riina Anttila, Maisa Tuomenpuro, Heli Pyykkönen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heli23011/wfp2025/issues"
+  },
+  "homepage": "https://github.com/heli23011/wfp2025#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.2",
+    "mongoose": "^8.13.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
