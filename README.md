@@ -1,7 +1,7 @@
 # wfp2025
 Web Framework Project
 
-# Pixel Pop
+## Pixel Pop
 
 Pixel Pop is a Y2K-inspired web store created as part of a backend development course assignment (Spring 2025). The site features nostalgic visuals and includes dynamic product content, an admin panel, and accessible layout structures.
 
