@@ -52,7 +52,7 @@ Details on heading structure, color contrast, keyboard navigation, and screen re
 ## Security and Validation
 
 - Form inputs are validated and sanitized using `express-validator`
-- Admin login is protected by server-side authentication (e.g. sessions or Passport.js)
+- Admin login is protected by server-side authentication
 - Contact form uses Nodemailer to securely send email messages to the site owner
 
 ## How to use the project
