@@ -74,9 +74,13 @@ npm install
 ### 3. Create a .env file in the root folder and add the following:
 
 PORT=3000
+
 DBUSERNAME=yourMongoDBUsername
+
 DBPASSWORD=yourMongoDBPassword
+
 CLUSTER=your-cluster.mongodb.net
+
 DB=webproject25
 
 ### 4. Run the server
@@ -87,6 +91,8 @@ npm run dev
 
 ## Contributors
 
-Heli Pyykkönen,
-Maisa Tuomenpuro &
+Heli Pyykkönen
+
+Maisa Tuomenpuro 
+
 Henna-Riina Anttila 
