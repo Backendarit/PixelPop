@@ -87,6 +87,6 @@ npm run dev
 
 ## Contributors
 
-Heli Pyykkönen
-Maisa Tuomenpuro
+Heli Pyykkönen,
+Maisa Tuomenpuro &
 Henna-Riina Anttila 
