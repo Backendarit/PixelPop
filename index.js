@@ -1,11 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public'))); //Connect to public
 
 app.engine('handlebars', exphbs.engine({
   defaultLayout: 'main',
@@ -13,7 +15,10 @@ app.engine('handlebars', exphbs.engine({
 
 app.set('view engine', 'handlebars');
 
-
+//Connect testing!!!
+app.get('/', (req, res) => {
+  res.render('products');
+});
 
 const dbURI = `mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@${process.env.CLUSTER}/${process.env.DB}?retryWrites=true&w=majority&appName=Cluster0`;
 
