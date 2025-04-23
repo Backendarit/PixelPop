@@ -27,7 +27,7 @@ UI design and layout planning was done in Figma.
 - Backend: Node.js, Express
 - Database: MongoDB Atlas, Mongoose
 - Templating: Handlebars (server-side rendering)
-- Styling: HTML + CSS (custom, Y2K-inspired), React
+- Styling: HTML + CSS (custom, Y2K-inspired)
 - Version control: Git + GitHub
 - Team coordination: Kanban board + daily Scrum notes
 
