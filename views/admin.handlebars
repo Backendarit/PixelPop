@@ -1,0 +1,51 @@
+<h1 class="visually-hidden">Admin Panel</h1>
+
+<div class="form-container">
+  <img src="/images/admin_panel.png" alt="Admin Panel" width="400">
+
+  <form action="/admin" method="POST" class="admin-form">
+    <input id="name" name="name" type="text" required placeholder="Product name">
+    <input id="price" name="price" type="number" step="0.01" required placeholder="Price">
+    <input id="category" name="category" type="text" placeholder="Category">
+    <input id="imageUrl" name="imageUrl" type="text" placeholder="Image URL">
+
+    <div class="checkbox-group">
+      <input id="inStock" name="inStock" type="checkbox">
+      <label for="inStock">Available in stock</label>
+    </div>
+
+    <button type="submit">Add Product</button>
+  </form>
+</div>
+
+
+
+{{#if products.length}}
+  <h2>Product List</h2>
+  <section class="product-list">
+    {{#each products}}
+      <div class="product-card">
+        <img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image">
+        <div class="product-info">
+          <h3>{{this.name}}</h3>
+          <p><strong>Price:</strong> {{this.price}} €</p>
+          {{#if this.category}}
+            <p><strong>Category:</strong> {{this.category}}</p>
+          {{/if}}
+          <p>
+            <strong>Availability:</strong>
+            {{#if this.inStock}} In stock {{else}} Out of stock {{/if}}
+          </p>
+          <div class="product-actions">
+            <a href="/admin/edit/{{this._id}}" class="btn edit">Edit</a>
+            <form action="/admin/delete/{{this._id}}" method="POST" style="display:inline;" onsubmit="return confirmDelete('{{this.name}}')">
+              <button type="submit" class="btn delete" aria-label="Delete product {{this.name}}">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </section>
+{{else}}
+  <p>No products yet.</p>
+{{/if}}
