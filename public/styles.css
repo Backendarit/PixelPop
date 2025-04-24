@@ -55,7 +55,7 @@ body {
 }
 
 .admin-form button {
-  background-color: #6f4cc0;
+  background-color: #623ac2;
   color: white;
   padding: 0.5rem 1.5rem;
   font-size: 1rem;
@@ -129,7 +129,7 @@ body {
 }
 
 .custom-file-input::file-selector-button {
-  background-color: #6f4cc0;
+  background-color: #623ac2;
   color: white;
   border: none;
   padding: 0.4rem 1rem;
@@ -269,6 +269,7 @@ body {
   height: 40px;
   padding: 0;
   font-size: 1.2rem;
+  line-height: 1;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -278,7 +279,7 @@ body {
   text-decoration: none;
   font-family: inherit;
   font-weight: 500;
-
+  padding-top: 5px;
 }
 
 
@@ -286,12 +287,12 @@ body {
 
 
 .btn.edit {
-  background-color: #6f4cc0;
+  background-color: #623ac2;
   color: white;
 }
 
 .btn.delete {
-  background-color: #F77DAD;
+  background-color: #9c144a;
   color: white;
 }
 
