@@ -18,6 +18,7 @@ body {
   overflow: hidden;
 }
 
+/* Add product form */
 .form-container {
   max-width: 600px;
   margin: 0 auto;
@@ -73,14 +74,34 @@ body {
 
 .checkbox-group {
   display: flex;
-  align-items: center;
+  align-items: center; 
   gap: 0.5rem;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
-.checkbox-group input[type="checkbox"] {
-  align-self: center;
+.checkbox-group label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1; 
 }
+
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #ff66cc;
+  border: 2px solid #ff66cc;
+  border-radius: 4px;
+  box-shadow:
+    0 0 5px #ff66cc,
+    0 0 10px #ff66cc,
+    0 0 15px #ff66cc;
+  outline: none;
+  cursor: pointer;
+  transform: translateY(-3px);
+}
+
+
 
 
 .file-upload-group {
@@ -150,7 +171,7 @@ body {
   margin-right: auto;
 }
 
-
+/* Product List */
 .product-title.halo {
   text-align: center;
   font-size: 1.8rem;
