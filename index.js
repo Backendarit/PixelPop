@@ -26,6 +26,22 @@ const dbURI = `mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}
 
 console.log('Connecting to DB with URI:', dbURI);
 
+// dummy database for Heli, going to be deleted later
+let products = [
+  {name: "green phone", 
+    price: 50, 
+    category: "phone", 
+    imageUrl: "http",
+    inStock: false
+  },
+  {name: "yellow phone", 
+    price: 50, 
+    category: "phone", 
+    imageUrl: "http",
+    inStock: false
+  }
+  ]
+// end Helis testing
 
 //show the admin page when user goes to /admin
 app.get('/admin', async (req, res) => {
@@ -80,6 +96,17 @@ app.post('/admin', async (req, res) => {
     });
   }
 });
+
+// all products in the shop
+app.get('/allproducts', (req, res) => {
+
+  res.render('allproducts', {
+    title: 'Shop',
+    products: products
+  })
+
+});
+
 
 
 mongoose.connect(dbURI)

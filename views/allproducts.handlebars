@@ -1,0 +1,23 @@
+<div>
+    <h1>Wellcome to the store</h1>
+    <div>
+        <nav class="sidenavi">
+            Phones <br>
+            Tamagotchis<br>
+            Ringtones<br>
+            Cameras<br>
+        </nav>
+    </div>
+    <div>
+    <!-- loop pruducts -->
+        {{#each products}}
+            <p>
+                <b>{{this.name}}</b><br>
+                {{this.price}}<br>
+                {{this.category}}<br>
+                {{this.imageUrl}}<br>
+                {{this.inStock}}<br>
+            </p>
+        {{/each}}
+    </div>
+</div>
