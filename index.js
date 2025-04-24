@@ -5,6 +5,20 @@ const path = require('path');
 require('dotenv').config();
 const Product = require('./models/Product');
 
+// import multer for file upload
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/images'); // where to save the file
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));//file name
+  }
+});
+
+const upload = multer({ storage: storage });
+
 
 const app = express();
 
@@ -68,10 +82,10 @@ app.get('/admin', async (req, res) => {
 
 
 //when the form on the admin page is submitted this route runs
-app.post('/admin', async (req, res) => {
+app.post('/admin', upload.single('productImage'), async (req, res) => {
   //get data from the form
-  const { name, price, category, imageUrl } = req.body;
-
+  const { name, price, category } = req.body;
+  const imageUrl = req.file ? '/images/' + req.file.filename : ''; //use multer to get the file name and path
   //create a new product with the form data
   const newProduct = new Product({
     name,

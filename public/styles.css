@@ -45,6 +45,7 @@ body {
   width: 100%;
   box-sizing: border-box;
   background-color: #F8E0FE;
+  color: black;
 }
 
 .checkbox-group label {
@@ -53,7 +54,7 @@ body {
 }
 
 .admin-form button {
-  background-color: #825DD0;
+  background-color: #6f4cc0;
   color: white;
   padding: 0.5rem 1.5rem;
   font-size: 1rem;
@@ -67,7 +68,7 @@ body {
 }
 
 .admin-form button:hover {
-  background-color: #6f4cc0;
+  background-color: #825DD0;
 }
 
 .checkbox-group {
@@ -77,61 +78,211 @@ body {
   justify-content: start;
 }
 
+.file-upload-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.file-label {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #333;
+}
+
+.custom-file-input {
+  background-color: #F8E0FE;
+  border: 2px solid #1F288D;
+  border-radius: 6px;
+  padding: 0.5rem;
+  font-size: 0.95rem;
+  color: #333;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.custom-file-input:hover {
+  box-shadow: 0 0 6px #ff66cc;
+}
+
+.custom-file-input::file-selector-button {
+  background-color: #6f4cc0;
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  margin-right: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.custom-file-input::file-selector-button:hover {
+  background-color: #8a83d1;
+}
+
+
+.no-products {
+  text-align: center;
+  color: black;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  text-shadow:
+    0 0 5px #ff66cc,
+    0 0 10px #ff66cc,
+    0 0 20px #ff66cc;
+}
+
+.admin-image {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.product-title.halo {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1F288D;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  text-shadow:
+    0 0 5px #AFADFB,
+    0 0 10px #AFADFB,
+    0 0 15px #AFADFB;
+}
 
 
 .product-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  justify-items: center;
 }
+
 
 .product-card {
-  border: 1px solid #ccc;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  background: linear-gradient(to bottom right, #faf0ff, #ffe0f4);
+  border: 2px solid #1F288D;
   border-radius: 12px;
   padding: 1rem;
-  width: 250px;
-  background-color: #fff;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: auto;     
+  margin: 0 auto;
+  
 }
+
+
+
+
 
 .product-image {
-  width: 100%;
-  height: auto;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border: 1px solid #aaa;
   border-radius: 8px;
-  object-fit: cover;
+  background-color: white;
+  align-self: center;
 }
 
+
+
+
 .product-info {
-  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+
+.product-info h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #1F288D;
 }
 
 .product-info p {
   margin: 0.25rem 0;
+  font-size: 1.2rem; 
+  line-height: 1.4;
 }
+
 
 .product-actions {
-  margin-top: 1rem;
   display: flex;
   gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
 }
+
 
 .btn {
-  padding: 0.5rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 40px;
+  padding: 0;
+  font-size: 1.2rem;
   border: none;
   border-radius: 8px;
-  text-decoration: none;
-  color: white;
   cursor: pointer;
-  font-size: 0.9rem;
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  font-family: inherit;
+  font-weight: 500;
+
 }
 
+
+
+
+
 .btn.edit {
-  background-color: #007bff;
+  background-color: #6f4cc0;
+  color: white;
 }
 
 .btn.delete {
-  background-color: #dc3545;
+  background-color: #F77DAD;
+  color: white;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 6px #ccc;
+}
+
+
+
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid #ff66cc;
+  outline-offset: 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px #ff66cc;
 }
 
 .sidenavi{
