@@ -78,6 +78,11 @@ body {
   justify-content: start;
 }
 
+.checkbox-group input[type="checkbox"] {
+  align-self: center;
+}
+
+
 .file-upload-group {
   display: flex;
   flex-direction: column;
@@ -88,7 +93,7 @@ body {
 
 .file-label {
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #333;
 }
 
@@ -157,6 +162,15 @@ body {
     0 0 5px #AFADFB,
     0 0 10px #AFADFB,
     0 0 15px #AFADFB;
+}
+
+.product-title.halo:hover {
+  text-shadow:
+    0 0 8px #AFADFB,
+    0 0 16px #AFADFB,
+    0 0 24px #AFADFB;
+  transform: scale(1.02);
+  transition: all 0.3s ease-in-out;
 }
 
 
