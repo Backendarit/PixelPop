@@ -89,14 +89,7 @@ body {
 .checkbox-group input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  accent-color: #ff66cc;
-  border: 2px solid #ff66cc;
-  border-radius: 4px;
-  box-shadow:
-    0 0 5px #ff66cc,
-    0 0 10px #ff66cc,
-    0 0 15px #ff66cc;
-  outline: none;
+  outline-offset: 2px;
   cursor: pointer;
   transform: translateY(-3px);
 }
