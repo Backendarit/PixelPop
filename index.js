@@ -132,28 +132,6 @@ app.get('/allproducts', async (req, res) => {
   }
 });
 
-app.post('/allproducts', async (req, res) => {
-  //get data from the form
-  const category = req.body;
-  
-  try {
-    //
-    const phones = await Product.find({category: category});
-    res.render('allproducts', {
-      title: 'Shop',
-      products: phones.map(p => p.toObject())
-    });
-    //redirect back to the admin page to see the new product
-    res.redirect('/allproducts');
-  } catch (err) {
-    //if something goes wrong show error on the page
-    console.error('Error saving product:', err);
-    res.status(400).render('allproducts', {
-      title: 'Admin Panel',
-      error: 'Product creation failed'
-    });
-  }
-});
 
 mongoose.connect(dbURI)
   .then(() => {
