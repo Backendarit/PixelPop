@@ -31,10 +31,22 @@ app.engine('handlebars', exphbs.engine({
 
 app.set('view engine', 'handlebars');
 
-//Connect testing!!!
+//Connect testing! change to home when ready
 app.get('/', (req, res) => {
-  res.render('products');
+  res.render('products', 
+  {title: 'Products'});
 });
+
+app.get('/products', (req, res) => {
+  res.render('products', 
+  {title: 'Products'});
+});
+
+app.get('/contact', (req, res) => {
+  res.render('contact', 
+  {title: 'Contact'});
+});
+
 
 const dbURI = `mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@${process.env.CLUSTER}/${process.env.DB}?retryWrites=true&w=majority&appName=Cluster0`;
 
@@ -63,6 +75,10 @@ app.get('/admin', async (req, res) => {
   }
 });
 
+//show the login page when user goes to /admin/login
+app.get('/admin/login', (req, res) => {
+  res.render('admin-login', { title: 'Admin Login' });
+});
 
 
 //when the form on the admin page is submitted this route runs
