@@ -31,10 +31,22 @@ app.engine('handlebars', exphbs.engine({
 
 app.set('view engine', 'handlebars');
 
-//Connect testing!!!
+//Connect testing! change to home when ready
 app.get('/', (req, res) => {
-  res.render('products');
+  res.render('products', 
+  {title: 'Products'});
 });
+
+app.get('/products', (req, res) => {
+  res.render('products', 
+  {title: 'Products'});
+});
+
+app.get('/contact', (req, res) => {
+  res.render('contact', 
+  {title: 'Contact'});
+});
+
 
 const dbURI = `mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@${process.env.CLUSTER}/${process.env.DB}?retryWrites=true&w=majority&appName=Cluster0`;
 
