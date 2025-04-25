@@ -401,6 +401,8 @@ textarea:focus {
   width: 10em;
   padding: 1em;
 }
+
+
 /*HEADER*/
   .site-header {
     border: 2px solid #662D91;
@@ -421,7 +423,6 @@ textarea:focus {
     align-items: center;
     font-weight: bold;
     font-size: 20px;
-    font-family: 'Comic Sans MS', cursive;
     border: 2px solid #662D91;
     border-radius: 20px;
     background-color: #B9AFFB;
@@ -430,7 +431,7 @@ textarea:focus {
   .main-nav a {
     text-decoration: none;
     color: #333;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem 0.1rem 1rem;
   }
   
   .heart-icon {
