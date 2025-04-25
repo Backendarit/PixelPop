@@ -2,22 +2,36 @@
     <h1>Wellcome to the store</h1>
     <div>
         <nav class="sidenavi">
-            Phones <br>
+            Phones<br>
             Tamagotchis<br>
             Ringtones<br>
             Cameras<br>
         </nav>
     </div>
     <div>
-    <!-- loop pruducts -->
-        {{#each products}}
-            <p>
-                <b>{{this.name}}</b><br>
-                {{this.price}}<br>
-                {{this.category}}<br>
-                {{this.imageUrl}}<br>
-                {{this.inStock}}<br>
-            </p>
-        {{/each}}
+    <!-- loop all pruducts -->
+        {{#if products.length}}
+            <h2 class="product-title halo"> Product List</h2>
+            <section class="product-list" aria-label="List of all products">
+            {{#each products}}
+                <article class="product-card" aria-labelledby="product-{{@index}}">
+                <img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image">
+                 <div class="product-info">
+                    <h3 id="product-{{@index}}">{{this.name}}</h3>
+                    <p><strong>Price:</strong> {{this.price}} €</p>
+                {{#if this.category}}<p><strong>Category:</strong> {{this.category}}</p>{{/if}}
+                <p>
+                <strong>Availability:</strong>
+                {{#if this.inStock}}<span style="color:green;">In stock</span>
+                {{else}}<span style="color:red;">Out of stock</span>{{/if}}
+                </p>
+                </div>
+                </article>
+            {{/each}}
+            </section>
+        {{else}}
+            <p class="no-products"> No products in the shop.</p>
+
+        {{/if}}
     </div>
 </div>

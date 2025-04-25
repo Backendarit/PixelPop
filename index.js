@@ -40,22 +40,6 @@ const dbURI = `mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}
 
 console.log('Connecting to DB with URI:', dbURI);
 
-// dummy database for Heli, going to be deleted later
-let products = [
-  {name: "green phone", 
-    price: 50, 
-    category: "phone", 
-    imageUrl: "http",
-    inStock: false
-  },
-  {name: "yellow phone", 
-    price: 50, 
-    category: "phone", 
-    imageUrl: "http",
-    inStock: false
-  }
-  ]
-// end Helis testing
 
 //show the admin page when user goes to /admin
 app.get('/admin', async (req, res) => {
@@ -112,16 +96,48 @@ app.post('/admin', upload.single('productImage'), async (req, res) => {
 });
 
 // all products in the shop
-app.get('/allproducts', (req, res) => {
+app.get('/allproducts', async (req, res) => {
+  try {
+    //get all products from the database
+    const products = await Product.find();
 
-  res.render('allproducts', {
-    title: 'Shop',
-    products: products
-  })
-
+    //change the mongoose documents to an object for js-functions
+    res.render('allproducts', {
+      title: 'Shop',
+      products: products.map(p => p.toObject())
+    });
+  } catch (err) {
+    //if something goes wrong, show error message
+    console.error('Error loading shop:', err);
+    res.status(500).render('allproducts', {
+      title: 'Error',
+      error: 'Could not load shop'
+    });
+  }
 });
 
-
+app.post('/allproducts', async (req, res) => {
+  //get data from the form
+  const category = req.body;
+  
+  try {
+    //
+    const phones = await Product.find({category: category});
+    res.render('allproducts', {
+      title: 'Shop',
+      products: phones.map(p => p.toObject())
+    });
+    //redirect back to the admin page to see the new product
+    res.redirect('/allproducts');
+  } catch (err) {
+    //if something goes wrong show error on the page
+    console.error('Error saving product:', err);
+    res.status(400).render('allproducts', {
+      title: 'Admin Panel',
+      error: 'Product creation failed'
+    });
+  }
+});
 
 mongoose.connect(dbURI)
   .then(() => {
