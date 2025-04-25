@@ -79,6 +79,10 @@ app.get('/admin', async (req, res) => {
   }
 });
 
+//show the login page when user goes to /admin/login
+app.get('/admin/login', (req, res) => {
+  res.render('admin-login', { title: 'Admin Login' });
+});
 
 
 //when the form on the admin page is submitted this route runs

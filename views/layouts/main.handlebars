@@ -2,30 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{title}} | Website Name</title>
+  <title>{{title}} | Pixel Pop</title>
   <link href="https://fonts.googleapis.com/css2?family=Karma:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+
   <header>
-    <h1>Name</h1>
+    <h1><a href="/" class="site-title">Pixel Pop</a></h1>
     <nav>
       <a href="/">Home</a>
       <a href="/products">Shop</a>
-      <a href="/cart">Cart</a>
-      <a href="/admin">Admin</a>
+      <a href="/contact">Contact</a>
     </nav>
   </header>
+
   <main>
     {{{body}}}
   </main>
+
   <footer>
-    <p>&copy; 2025</p>
+    <nav class="footer-nav">
+      <a href="/contact">Contact</a>
+      <span>Privacy Policy</span>
+      <span>Terms and Conditions</span>
+      <a href="/admin/login">Admin Login</a>
+    </nav>
+    <p>&copy; 2025 Pixel Pop</p>
   </footer>
+
   <script>
-  function confirmDelete(productName) {
-    return confirm(`Are you sure you want to delete "${productName}"?`);}
-</script>
+    function confirmDelete(productName) {
+      return confirm(`Are you sure you want to delete "${productName}"?`);
+    }
+  </script>
+
 </body>
 </html>
