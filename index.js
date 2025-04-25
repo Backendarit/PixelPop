@@ -130,8 +130,91 @@ app.get('/allproducts', async (req, res) => {
       error: 'Could not load shop'
     });
   }
+}); 
+
+// all phones in the shop
+app.get('/allproducts/phones', async (req, res) => {
+  try {
+    //get all phones from the database
+    const phones = await Product.find({category : "phone"});
+
+    //change the mongoose documents to an object for js-functions
+    res.render('allproducts', {
+      title: 'Shop',
+      products: phones.map(p => p.toObject())
+    });
+  } catch (err) {
+    //if something goes wrong, show error message
+    console.error('Error loading shop:', err);
+    res.status(500).render('allproducts', {
+      title: 'Error',
+      error: 'Could not load shop'
+    });
+  }
 });
 
+// all tamagotchis in the shop
+app.get('/allproducts/tamagotchis', async (req, res) => {
+  try {
+    //get all tamagotchis from the database
+    const tamagotchis = await Product.find({category : "tamagotchi"});
+
+    //change the mongoose documents to an object for js-functions
+    res.render('allproducts', {
+      title: 'Shop',
+      products: tamagotchis.map(p => p.toObject())
+    });
+  } catch (err) {
+    //if something goes wrong, show error message
+    console.error('Error loading shop:', err);
+    res.status(500).render('allproducts', {
+      title: 'Error',
+      error: 'Could not load shop'
+    });
+  }
+});
+
+// all ringtones in the shop
+app.get('/allproducts/ringtones', async (req, res) => {
+  try {
+    //get all ringtones from the database
+    const ringtones = await Product.find({category : "ringtone"});
+
+    //change the mongoose documents to an object for js-functions
+    res.render('allproducts', {
+      title: 'Shop',
+      products: ringtones.map(p => p.toObject())
+    });
+  } catch (err) {
+    //if something goes wrong, show error message
+    console.error('Error loading shop:', err);
+    res.status(500).render('allproducts', {
+      title: 'Error',
+      error: 'Could not load shop'
+    });
+  }
+});
+
+// all cameras in the shop
+app.get('/allproducts/cameras', async (req, res) => {
+  try {
+    //get all cameras from the database
+    const cameras = await Product.find({category : "camera"});
+
+    //change the mongoose documents to an object for js-functions
+    res.render('allproducts', {
+      title: 'Shop',
+      products: cameras.map(p => p.toObject())
+    });
+  } catch (err) {
+    //if something goes wrong, show error message
+    console.error('Error loading shop:', err);
+    res.status(500).render('allproducts', {
+      title: 'Error',
+      error: 'Could not load shop'
+    });
+  }
+});
 
 mongoose.connect(dbURI)
   .then(() => {

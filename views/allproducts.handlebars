@@ -1,17 +1,17 @@
 <div>
-    <h1>Wellcome to the store</h1>
+    <h2 class="product-title halo">Wellcome to the store</h2>
     <div>
         <nav class="sidenavi">
-            Phones<br>
-            Tamagotchis<br>
-            Ringtones<br>
-            Cameras<br>
+            <a href="/allproducts/" aria-label="All items listed">All items</a><br>
+            <a href="/allproducts/phones/" aria-label="All phones listed">Phones</a><br>
+            <a href="/allproducts/tamagotchis/" aria-label="All tamagothcis listed">Tamagotchis</a><br>
+            <a href="/allproducts/ringtones/" aria-label="All ringtones listed">Ringtones</a><br>
+            <a href="/allproducts/cameras/" aria-label="All cameras listed">Cameras</a><br>
         </nav>
     </div>
     <div>
     <!-- loop all pruducts -->
         {{#if products.length}}
-            <h2 class="product-title halo"> Product List</h2>
             <section class="product-list" aria-label="List of all products">
             {{#each products}}
                 <article class="product-card" aria-labelledby="product-{{@index}}">
