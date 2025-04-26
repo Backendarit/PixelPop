@@ -216,6 +216,8 @@ app.get('/allproducts/cameras', async (req, res) => {
   }
 });
 
+// add to the cart
+
 mongoose.connect(dbURI)
   .then(() => {
     const PORT = process.env.PORT || 3000;

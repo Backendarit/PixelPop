@@ -393,15 +393,31 @@ textarea:focus {
   box-shadow: 0 0 10px #ff66cc;
 }
 
-.sidenavi{
-  border: 2px solid #003366;
-  background-color: #FBB0DD;
-  border-radius: 10px;
-  float: left;
+/*Shop*/
+
+.sidenavi {
+  border: 2px solid #662D91;
+  background-color: #B9AFFB;
+  border-radius: 20px;
   width: 10em;
   padding: 1em;
+  font-weight: bold;
+  font-size: 20px;
+  float: left;
 }
 
+.sidenavi a{
+  text-decoration: none;
+}
+
+.sidenavi a:hover {
+  text-decoration: underline;
+}
+
+.btn.add {
+  background-color: #623ac2;
+  color: white;
+}
 
 /*HEADER*/
   .site-header {
@@ -514,4 +530,26 @@ textarea:focus {
   .send-button:hover {
     background: #612dd1;
   }
-  
+
+  /*Footer*/
+  .site-footer {
+    border: 2px solid #662D91;
+    max-width: 800px;
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: #E497ED;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  .footer-content{
+    padding-right: 2rem;
+  }
