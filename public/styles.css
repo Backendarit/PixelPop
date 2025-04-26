@@ -552,8 +552,9 @@ textarea:focus {
     justify-content: center;
     font-weight: bold;
     font-size: 15px;
+    
   }
 
-  .footer-content{
+  .footer-content {
     padding-right: 2rem;
   }
