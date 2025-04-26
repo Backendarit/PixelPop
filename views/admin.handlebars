@@ -1,7 +1,8 @@
 <h1 class="visually-hidden">Admin Panel</h1>
 
 <div class="form-container">
-  <img src="/images/admin_panel.png" alt="Admin Panel" width="600">
+
+  <img src="/images/admin_panel.png" alt="Admin Panel" class="admin-image">
 
   <form action="/admin" method="POST" enctype="multipart/form-data" class="admin-form">
     <label for="name" class="visually-hidden">Product name</label>
@@ -13,23 +14,19 @@
     <label for="category" class="visually-hidden">Category</label>
     <input id="category" name="category" type="text" placeholder="Category">
 
-
     <div class="file-upload-group">
-        <label for="productImage" class="file-label"><strong>Product image</strong></label>
-        <input id="productImage" name="productImage" type="file" accept="image/*" required class="custom-file-input">
+      <label for="productImage" class="file-label"><strong>Product image</strong></label>
+      <input id="productImage" name="productImage" type="file" accept="image/*" required class="custom-file-input">
     </div>
-
-
 
     <div class="checkbox-group">
-        <label for="inStock"><strong>Available in stock</strong></label>
-        <input id="inStock" name="inStock" type="checkbox">
+      <label for="inStock"><strong>Available in stock</strong></label>
+      <input id="inStock" name="inStock" type="checkbox">
     </div>
-
-
 
     <button type="submit">Add Product</button>
   </form>
+
 </div>
 
 
