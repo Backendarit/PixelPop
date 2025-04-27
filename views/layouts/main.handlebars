@@ -8,35 +8,40 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="main-nav">
-    <a href="/">Home</a>
-    <a href="/allproducts">Shop</a>
-    <a href="/contact">Contact</a>
-    <span class="heart-icon">💗</span>
-  </div>
-  <div class="header-bd">
-    <img src="/images/pixelpop.png" alt="Pixel Pop logo" class="logo"/>
-  </div>
-</header>
-  <main>
-    {{{body}}}
-  </main>
+  <div class="page-wrapper">
 
-  <footer class="site-footer">
-    <nav class="footer-nav">
-      <span class="footer-content">Privacy Policy</span>
-      <span class="footer-content">Terms and Conditions</span>
-      <a href="/admin/login">Admin Login</a>
-    </nav>
-    <p class="footer-nav">&copy; 2025 Pixel Pop</p>
-  </footer>
+    <header class="site-header">
+      <div class="main-nav">
+        <a href="/">Home</a>
+        <a href="/allproducts">Shop</a>
+        <a href="/contact">Contact</a>
+        <span class="heart-icon">💗</span>
+      </div>
+      <div class="header-bd">
+        <img src="/images/pixelpop.png" alt="Pixel Pop logo" class="logo"/>
+      </div>
+    </header>
+
+    <main class="content">
+      {{{body}}}
+    </main>
+
+    <footer class="site-footer">
+      <nav class="footer-nav">
+        <span class="footer-content">Privacy Policy</span>
+        <span class="footer-content">Terms and Conditions</span>
+        <a href="/admin/login">Admin Login</a>
+      </nav>
+      <p class="footer-nav">&copy; 2025 Pixel Pop</p>
+    </footer>
+
+  </div>
 
   <script>
     function confirmDelete(productName) {
       return confirm(`Are you sure you want to delete "${productName}"?`);
     }
   </script>
-
 </body>
 </html>
+
