@@ -111,6 +111,56 @@ app.post('/admin', upload.single('productImage'), async (req, res) => {
   }
 });
 
+// update product
+app.get('/admin/edit/:id', async (req, res) => {
+  // get id from url
+  const idUpdatingItem = req.params.id;
+  try {
+    //get old info from database
+    const itemToUpdate = await Product.findById(idUpdatingItem);
+    // deliver old info to the form
+    res.render('editproduct', {
+      title: 'Edit',
+      products: itemToUpdate.toObject()
+    });
+  } catch (err) {
+    //if something goes wrong, show error message
+    console.error('Error loading item:', err);
+    res.status(500).render('editproduct', {
+      title: 'Error',
+      error: 'Could not load item'
+    });
+  }
+});
+
+// update edited item to database
+app.post('/admin/update/:id', upload.single('productImage'), async (req, res) => {
+  // get id from url
+  const idUpdatingItem = req.params.id;
+
+  //collect new info from the product given in the form
+  const editedName = req.body.name;
+  const editedPrice = req.body.price;
+  const editedCategory = req.body.category;
+  const editedImageUrl = req.file ? '/images/' + req.file.filename : '';
+  const editedInStock = req.body.inStock;
+
+  try {
+    //save the product to the database
+    await Product.updateOne({_id: idUpdatingItem}, {$set: {name: editedName, price: editedPrice, category: editedCategory, imageUrl: editedImageUrl, inStock: editedInStock}});
+
+    //redirect back to the admin page to see the new product
+    res.redirect('/admin');
+  } catch (err) {
+    //if something goes wrong show error on the page
+    console.error('Error updating product:', err);
+    res.status(400).render('admin', {
+      title: 'Admin Panel',
+      error: 'Updating product failed'
+    });
+  }
+});
+
 // all products in the shop
 app.get('/allproducts', async (req, res) => {
   try {

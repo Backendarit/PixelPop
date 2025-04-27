@@ -1,0 +1,30 @@
+<h1 class="visually-hidden">Admin Panel</h1>
+
+<div class="form-container">
+
+  <img src="/images/admin_panel.png" alt="Admin Panel" class="admin-image">
+
+  <form action="/admin/update/{{products._id}}" method="POST" enctype="multipart/form-data" class="admin-form">
+    <label for="name" class="visually-hidden">Product name</label>
+    <input id="name" name="name" type="text" required placeholder={{products.name}}>
+
+    <label for="price" class="visually-hidden">Price</label>
+    <input id="price" name="price" type="number" step="0.01" required placeholder={{products.price}}>
+
+    <label for="category" class="visually-hidden">Category</label>
+    <input id="category" name="category" type="text" placeholder={{products.category}}>
+
+    <div class="file-upload-group">
+      <label for="productImage" class="file-label"><strong>Product image</strong></label>
+      <input id="productImage" name="productImage" type="file" accept="image/*" required class="custom-file-input">
+    </div>
+
+    <div class="checkbox-group">
+      <label for="inStock"><strong>Available in stock</strong></label>
+      <input id="inStock" name="inStock" type="checkbox">
+    </div>
+
+    <button type="submit">Edit Product</button>
+  </form>
+
+</div>
