@@ -435,7 +435,19 @@ textarea:focus {
 
 /*Shop*/
 
+.shop-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
 .sidenavi {
+  margin-top: 2rem; 
   border: 2px solid #662D91;
   background-color: #B9AFFB;
   border-radius: 20px;
@@ -461,16 +473,17 @@ textarea:focus {
 
 /*HEADER*/
 .site-header {
-  border: 2px solid #662D91;
-  max-width: 800px;
   width: 100%;
-  margin: 1rem auto 0 auto;
+  max-width: 880px;
+  margin: 1rem auto;
   padding: 1rem;
   border-radius: 40px;
+  border: 2px solid #662D91;
   background-color: #E497ED;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  box-sizing: border-box; /* tärkeä, että padding ei riko leveyttä */
 }
   .main-nav {
     position: relative;
@@ -575,11 +588,16 @@ textarea:focus {
 
   /*Footer*/
   .site-footer {
-    background-color: #E497ED;
-    border: 2px solid #662D91;
-    border-radius: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 1rem auto;
     padding: 1rem;
-    margin-top: auto;
+    border-radius: 20px;
+    border: 2px solid #662D91;
+    background-color: #E497ED;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
   }
   
   .footer-nav {
@@ -593,3 +611,25 @@ textarea:focus {
   .footer-content {
     padding-right: 1rem;
   }
+
+  @media (max-width: 600px) {
+    .main-nav {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer-nav {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .product-list {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+    }
+  }
+  
+  
