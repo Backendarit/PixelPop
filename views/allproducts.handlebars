@@ -39,5 +39,16 @@
             <p class="no-products"> No products in the shop.</p>
 
         {{/if}}
+    <div class="storecontent">
+    <!-- loop pruducts -->
+        {{#each products}}
+            <p>
+                <b>{{this.name}}</b><br>
+                {{this.price}}<br>
+                {{this.category}}<br>
+                {{this.imageUrl}}<br>
+                {{this.inStock}}<br>
+            </p>
+        {{/each}}
     </div>
 </div>
