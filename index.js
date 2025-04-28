@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
 const path = require('path');
 require('dotenv').config();
-const Product = require('./models/Product');
+const { body, validationResult } = require('express-validator');
 
 // import multer for file upload
 const multer = require('multer');
@@ -19,35 +19,28 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-
+//Create express app
 const app = express();
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public'))); //Connect to public
+//Connect to routes contact
+app.use('',require('./routes/contact'))
 
+//Middlewares
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public'))); 
+
+
+//Connects to handelbars
 app.engine('handlebars', exphbs.engine({
   defaultLayout: 'main',
 }));
 
 app.set('view engine', 'handlebars');
 
-//Connect testing! change to home when ready
-app.get('/', (req, res) => {
-  res.render('products', 
-  {title: 'Products'});
-});
+//Connect to models products
+const Product = require('./models/Product');
 
-app.get('/products', (req, res) => {
-  res.render('products', 
-  {title: 'Products'});
-});
-
-app.get('/contact', (req, res) => {
-  res.render('contact', 
-  {title: 'Contact'});
-});
-
-
+//Mongo DB connection
 const dbURI = `mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@${process.env.CLUSTER}/${process.env.DB}?retryWrites=true&w=majority&appName=Cluster0`;
 
 console.log('Connecting to DB with URI:', dbURI);
@@ -267,6 +260,9 @@ app.get('/allproducts/cameras', async (req, res) => {
 });
 
 // add to the cart
+
+
+
 
 mongoose.connect(dbURI)
   .then(() => {

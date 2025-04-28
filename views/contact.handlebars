@@ -1,15 +1,29 @@
+{{#if success}}
+  <div class="success-message">{{success}}</div>
+{{/if}}
+
+{{#if errors}}
+  <ul class="error-messages">
+    {{#each errors}}
+      <li>{{this.msg}}</li>
+    {{/each}}
+   </ul>
+{{/if}}
+
 <div class="contact-container">
   <h1 class="contact-title">Contact Us</h1>
 
   <form action="/contact" method="POST" class="contact-form">
-    <input id="name" name="name" placeholder="Name" type="text" required>
 
-    <input id="email" name="email" placeholder="Email" type="email" required>
+    <input id="name" name="name" placeholder="Name" type="text" required value="{{formData.name}}">
 
-    <input id="subject" name="subject" placeholder="Subject" type="text" required>
+    <input id="email" name="email" placeholder="Email" type="email" required value="{{formData.email}}">
 
-    <textarea id="message" name="message" placeholder="Message" rows="5" required></textarea>
+    <input id="subject" name="subject" placeholder="Subject" type="text" required value="{{formData.subject}}">
+
+    <textarea id="message" name="message" placeholder="Message" rows="5" required>{{formData.message}}</textarea>
 
     <button type="submit" class="send-button">Send</button>
+    
   </form>
 </div>

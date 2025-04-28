@@ -527,26 +527,23 @@ textarea:focus {
   
   /*CONTACT*/
   .contact-container {
-    background: #E497ED;
+    background-image: linear-gradient(to bottom right, #AFADFB, #FBB0DD);
     border: 2px solid #662D91;
     border-radius: 40px;
     max-width: 600px;
     margin: 2rem auto;
     padding: 1rem;
-    font-family: 'Comic Sans MS', cursive;
     width: 100%;
   }
   
   
   .contact-title {
     text-align: center;
-    background: #C2A3FF;
     font-weight: bold;
     font-size: 20px;
-    font-family: 'Comic Sans MS', cursive;
     border: 2px solid #662D91;
     border-radius: 20px;
-    background-color: #B9AFFB;
+    background-color: #FBB0DD;
     margin-top: 0;
   }
   
@@ -585,6 +582,34 @@ textarea:focus {
   .send-button:hover {
     background: #612dd1;
   }
+
+  .success-message {
+    background: #FDEBFF;
+    text-align: center;
+    color: green;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 2px solid #6A0DAD;
+    border-radius: 20px;
+    padding: 0.5rem 2rem;
+    align-self: center;
+  }
+  
+  .error-messages {
+    background: #FDEBFF;
+    text-align: center;
+    color: red;
+    border: 2px solid #6A0DAD;
+    border-radius: 20px;
+    padding: 0.7rem 1rem;
+    padding: 0.5rem 2rem;
+    align-self: center;
+  }
+  
+  .error-messages li {
+    margin-bottom: 0.5rem;
+  }
+  
 
   /*Footer*/
   .site-footer {
