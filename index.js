@@ -36,6 +36,7 @@ app.use(passport.session());
 //import routes
 const adminRoutes = require('./routes/adminRoutes');
 const adminAuthRoutes = require('./routes/adminAuthRoutes');
+const shopRoutes = require('./routes/shopRoutes');
 
 //import models
 const Product = require('./models/Product');
@@ -46,6 +47,7 @@ const Product = require('./models/Product');
 app.use('',require('./routes/contact'))
 app.use('/admin', adminRoutes); //admin product management
 app.use('/admin', adminAuthRoutes); //admin login and logout
+app.use('/allproducts', shopRoutes); //Shop
 
 
 //Connect to handelbars
@@ -61,58 +63,6 @@ app.set('view engine', 'handlebars');
 const dbURI = `mongodb+srv://${process.env.DBUSERNAME}:${process.env.DBPASSWORD}@${process.env.CLUSTER}/${process.env.DB}?retryWrites=true&w=majority&appName=Cluster0`;
 
 console.log('Connecting to DB with URI:', dbURI);
-
-
-
-// all products in the shop
-app.get('/allproducts', async (req, res) => {
-  try {
-    //get all products from the database
-    const products = await Product.find();
-
-    //change the mongoose documents to an object for js-functions
-    res.render('allproducts', {
-      title: 'Shop',
-      products: products.map(p => p.toObject())
-    });
-  } catch (err) {
-    //if something goes wrong, show error message
-    console.error('Error loading shop:', err);
-    res.status(500).render('allproducts', {
-      title: 'Error',
-      error: 'Could not load shop'
-    });
-  }
-}); 
-
-// all specific items in the shop
-app.get('/allproducts/findbycategory', async (req, res) => {
-
-  // get wanted category from url
-  const urlCategory = req.query.category;
-  
-  try {
-    //get all phones from the database
-    const phones = await Product.find({category : urlCategory});
-
-    //change the mongoose documents to an object for js-functions
-    res.render('allproducts', {
-      title: 'Shop',
-      products: phones.map(p => p.toObject())
-    });
-  } catch (err) {
-    //if something goes wrong, show error message
-    console.error('Error loading shop:', err);
-    res.status(500).render('allproducts', {
-      title: 'Error',
-      error: 'Could not load shop'
-    });
-  }
-});
-
-// add to the cart
-
-
 
 
 mongoose.connect(dbURI)

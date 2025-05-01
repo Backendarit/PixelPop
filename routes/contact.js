@@ -12,8 +12,7 @@ const contactController = require('../controllers/contactController');
 router.get('/contact', contactController.getContact); 
 
 //Contact form Submission Process through controller (app->router) 
-router.post('/contact', contactController.validateForm, contactController.submitContact
-  );
+router.post('/contact', contactController.validateForm, contactController.submitContact);
 
 //Export the module
 module.exports = router;

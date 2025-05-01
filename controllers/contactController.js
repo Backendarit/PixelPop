@@ -22,16 +22,32 @@ const getContact = async (req,res) => {
 
 //Contact form Validation & Sanitation
 const validateForm = [ 
-    body('name').trim().matches(/^[a-zA-ZÀ-ÿ\s'-]+$/).withMessage('Name can only contain letters or spaces.').escape(),
-    body('email').trim().normalizeEmail().isEmail().withMessage('Invalid email format'),
-    body('subject').trim().isLength({ max: 100 }).withMessage('Subject must be under 100 characters long').escape(),
-    body('message').trim().isLength({ min: 10 }).withMessage('Message must be at least 10 characters').isLength({ max: 1000 }).withMessage('Message must be under 1000 characters').escape()
+    body('name')
+        .trim()
+        .matches(/^[a-zA-ZÀ-ÿ\s'-]+$/).withMessage('Name can only contain letters or spaces.')
+        .notEmpty().withMessage('Name is required.') //
+        .escape(),
+    body('email')
+        .trim()
+        .notEmpty().withMessage('Email is required.')
+        .normalizeEmail()
+        .isEmail().withMessage('Invalid email format'),
+    body('subject')
+        .trim()
+        .notEmpty().withMessage('Subject is required.')
+        .isLength({ max: 100 }).withMessage('Subject must be under 100 characters long')
+        .escape(),
+    body('message')
+        .trim()
+        .isLength({ min: 10 }).withMessage('Message must be at least 10 characters')
+        .isLength({ max: 1000 }).withMessage('Message must be under 1000 characters')
+        .escape()
     ];
 
 //Contact form Submission Process
 const submitContact = async (req,res) => {
-console.log('Form body:', req.body);
-//console.log(errors.array())
+    console.log('Form body:', req.body);
+    //console.log(errors.array())
     const errors = validationResult(req);
 //Info about errors
     if (!errors.isEmpty()) {

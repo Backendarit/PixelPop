@@ -23,6 +23,18 @@
         <img src="/images/pixelpop.png" alt="Pixel Pop logo" class="logo"/>
       </div>
     </header>
+    
+{{#if success}}
+  <script>
+    alert("{{success}}");
+  </script>
+{{/if}}
+
+{{#if error}}
+  <script>
+    alert("{{error}}");
+  </script>
+{{/if}}
 
     <main class="content">
       {{{body}}}
