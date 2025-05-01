@@ -6,17 +6,17 @@
 
   <form action="/admin/update/{{products._id}}" method="POST" enctype="multipart/form-data" class="admin-form">
     <label for="name" class="visually-hidden">Product name</label>
-    <input id="name" name="name" type="text" required placeholder={{products.name}}>
+    <input id="name" name="name" type="text" required value="{{products.name}}">
 
     <label for="price" class="visually-hidden">Price</label>
-    <input id="price" name="price" type="number" step="0.01" required placeholder={{products.price}}>
+    <input id="price" name="price" type="number" step="0.01" required value="{{products.price}}">
 
     <label for="category" class="visually-hidden">Category</label>
-    <input id="category" name="category" type="text" placeholder={{products.category}}>
+    <input id="category" name="category" type="text" value="{{products.category}}">
 
     <div class="file-upload-group">
-      <label for="productImage" class="file-label"><strong>Product image</strong></label>
-      <input id="productImage" name="productImage" type="file" accept="image/*" required class="custom-file-input">
+      <label for="productImage" class="file-label"><strong>Change product image</strong></label>
+      <input id="productImage" name="productImage" type="file" accept="image/*" class="custom-file-input">
     </div>
 
     <div class="checkbox-group">
