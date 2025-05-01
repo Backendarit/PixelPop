@@ -141,10 +141,17 @@ exports.postUpdateProduct = [
 
     try {
       //save the product to the database
-      await Product.updateOne(
-        { _id: idUpdatingItem },
-        { $set: { name: editedName, price: editedPrice, category: editedCategory, imageUrl: editedImageUrl, inStock: editedInStock } }
-      );
+      if(!editedImageUrl){
+        await Product.updateOne(
+          { _id: idUpdatingItem },
+          { $set: { name: editedName, price: editedPrice, category: editedCategory, inStock: editedInStock } }
+        );
+      } else {
+        await Product.updateOne(
+          { _id: idUpdatingItem },
+          { $set: { name: editedName, price: editedPrice, category: editedCategory, imageUrl: editedImageUrl, inStock: editedInStock } }
+        );
+      }
 
     //redirect back to the admin page to see the new product
     res.redirect('/admin');

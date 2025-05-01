@@ -31,13 +31,13 @@ exports.getProductsByCathegory = async (req, res) => {
     const urlCategory = req.query.category;
     
     try {
-      //get all phones from the database
-      const phones = await Product.find({category : urlCategory});
+      //get all items from the database by category
+      const products = await Product.find({category : urlCategory});
   
       //change the mongoose documents to an object for js-functions
       res.render('allproducts', {
         title: 'Shop',
-        products: phones.map(p => p.toObject())
+        products: products.map(p => p.toObject())
       });
     } catch (err) {
       //if something goes wrong, show error message
