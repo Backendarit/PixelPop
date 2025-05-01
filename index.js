@@ -4,23 +4,49 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 require('dotenv').config();
 const { body, validationResult } = require('express-validator');
-
-//import routes
-const adminRoutes = require('./routes/adminRoutes');
-
-//import models
-const Product = require('./models/Product');
+const session = require('express-session');
+const passport = require('passport');
 
 //Create express app
 const app = express();
 
-//Routes
-app.use('',require('./routes/contact'))
-app.use('/admin', adminRoutes);
-
 //Middlewares
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public'))); 
+
+
+//ADMIN LOGIN
+// Passport config
+require('./config/passport')(passport);
+
+//use express session
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
+// Initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+//import routes
+const adminRoutes = require('./routes/adminRoutes');
+const adminAuthRoutes = require('./routes/adminAuthRoutes');
+
+//import models
+const Product = require('./models/Product');
+
+
+
+
+//Routes
+app.use('',require('./routes/contact'))
+app.use('/admin', adminRoutes); //admin product management
+app.use('/admin', adminAuthRoutes); //admin login and logout
+
 
 
 //Connect to handelbars

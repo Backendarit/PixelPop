@@ -1,2 +1,5 @@
 .env
 node_modules
+#Admin creation and password scripts
+scripts/changePassword.js
+scripts/createAdmin.js
