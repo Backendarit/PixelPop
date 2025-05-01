@@ -12,6 +12,7 @@ const app = express();
 
 //Middlewares
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public'))); 
 
 
@@ -41,12 +42,10 @@ const Product = require('./models/Product');
 
 
 
-
 //Routes
 app.use('',require('./routes/contact'))
 app.use('/admin', adminRoutes); //admin product management
 app.use('/admin', adminAuthRoutes); //admin login and logout
-
 
 
 //Connect to handelbars

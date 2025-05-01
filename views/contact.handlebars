@@ -1,9 +1,9 @@
 {{#if success}}
-  <div class="success-message">{{success}}</div>
+  <div class="success-message" role="status" aria-live="polite">{{success}}</div>
 {{/if}}
 
 {{#if errors}}
-  <ul class="error-messages">
+  <ul class="error-messages" role="alert">
     {{#each errors}}
       <li>{{this.msg}}</li>
     {{/each}}
@@ -15,15 +15,19 @@
 
   <form action="/contact" method="POST" class="contact-form">
 
+    <label for="name" class="visually-hidden">Name</label>
     <input id="name" name="name" placeholder="Name" type="text" required value="{{formData.name}}">
 
+    <label for="email" class="visually-hidden">Email</label>
     <input id="email" name="email" placeholder="Email" type="email" required value="{{formData.email}}">
 
+    <label for="subject" class="visually-hidden">Subject</label>
     <input id="subject" name="subject" placeholder="Subject" type="text" required value="{{formData.subject}}">
 
+    <label for="message" class="visually-hidden">Message</label>
     <textarea id="message" name="message" placeholder="Message" rows="5" required>{{formData.message}}</textarea>
 
     <button type="submit" class="send-button">Send</button>
-    
+
   </form>
 </div>

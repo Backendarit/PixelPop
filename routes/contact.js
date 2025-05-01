@@ -1,7 +1,6 @@
 // Add only the connections that you need
 const express = require('express');
 const exphbs = require('express-handlebars');
-const { body } = require('express-validator');
 
 //Function to handle the router
 const router = express.Router();
@@ -13,12 +12,7 @@ const contactController = require('../controllers/contactController');
 router.get('/contact', contactController.getContact); 
 
 //Contact form Submission Process through controller (app->router) 
-router.post('/contact', [ //Validate and sanitate inputs
-    body('name').trim().escape(),
-    body('email').trim().normalizeEmail(), //.isEmail() not working ;_;
-    body('subject').trim().escape(),
-    body('message').trim().escape()
-    ], contactController.submitContact
+router.post('/contact', contactController.validateForm, contactController.submitContact
   );
 
 //Export the module
