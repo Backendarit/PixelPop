@@ -281,6 +281,44 @@ body {
   display: block;
 }
 
+.logout-button {
+  background-color: #9c144a;
+  color: white;
+  font-family: 'Karma', serif;
+  font-size: 1rem;
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.logout-button:hover {
+  background-color: #c9302c;
+}
+
+.logout-form {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+}
+
+/* When screen is 768px or narrower (tablet & mobile), move logout under banner */
+@media (max-width: 768px) {
+  .logout-form {
+    position: static;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .logout-button {
+    font-size: 1.1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
 
 
 /* Product List */
