@@ -1,4 +1,5 @@
 const Product = require('../models/Product');
+const { body, validationResult } = require('express-validator');
 
 //show the admin page when user goes to /admin
 exports.getAdminPage = async (req, res) => {
@@ -28,7 +29,15 @@ exports.getLoginPage = (req, res) => {
 };
 
 //when the form on the admin page is submitted this route runs
-exports.postAddProduct = async (req, res) => {
+exports.postAddProduct = [ 
+  
+  // validate, sanitize
+  // trim whitespaces, check not empty, escape for transforming special HTML characters (XSS)
+  body('name').trim().notEmpty().withMessage('Product name required.').escape(),
+  body('price').trim().isNumeric().withMessage('Please give a price in numbers only.').escape(),
+  body('category').trim().notEmpty().withMessage('Category required.').escape(),
+  
+  async (req, res) => {
   //get data from the form
   const { name, price, category } = req.body;
   const imageUrl = req.file ? '/images/' + req.file.filename : ''; //use multer to get the file name and path
@@ -41,6 +50,16 @@ exports.postAddProduct = async (req, res) => {
     imageUrl,
     inStock: req.body.inStock === 'on' // checkbox returns 'on' if checked
   });
+
+    // errors from validation
+    const validationErrors = validationResult(req);
+    if(!validationErrors.isEmpty()){
+      return res.status(400).render('admin', {
+          title: 'Admin Panel',
+          // an array from validation errors and collecting only an error messages
+          error: validationErrors.array().map(err => err.msg).join(', ')
+        });
+    }
 
   try {
     //save the product to the database
@@ -56,7 +75,9 @@ exports.postAddProduct = async (req, res) => {
       error: 'Product creation failed'
     });
   }
-};
+}
+];
+
 
 // update product
 exports.getEditProduct = async (req, res) => {
@@ -81,34 +102,53 @@ exports.getEditProduct = async (req, res) => {
   }
 };
 
+
 // update edited item to database
-exports.postUpdateProduct = async (req, res) => {
-  // get id from url
-  const idUpdatingItem = req.params.id;
+exports.postUpdateProduct = [ 
+  
+  // validate, sanitize
+  // trim whitespaces, check not empty/is numeric, escape for transforming special HTML characters (XSS)
+  body('name').trim().notEmpty().withMessage('Product name required.').escape(),
+  body('price').trim().isNumeric().withMessage('Please give a number.').escape(),
+  body('category').trim().notEmpty().withMessage('Category required.').escape(),
+  
+  async (req, res) => {
+    // get id from url
+    const idUpdatingItem = req.params.id;
 
-  //collect new info from the product given in the form
-  const editedName = req.body.name;
-  const editedPrice = req.body.price;
-  const editedCategory = req.body.category;
-  const editedImageUrl = req.file ? '/images/' + req.file.filename : '';
-
-  const editedInStock = req.body.inStock === 'on';
-
-  try {
-    //save the product to the database
-    await Product.updateOne(
-      { _id: idUpdatingItem },
-      { $set: { name: editedName, price: editedPrice, category: editedCategory, imageUrl: editedImageUrl, inStock: editedInStock } }
-    );
-
-    //redirect back to the admin page to see the new product
-    res.redirect('/admin');
-  } catch (err) {
-    //if something goes wrong show error on the page
-    console.error('Error updating product:', err);
-    res.status(400).render('admin', {
-      title: 'Admin Panel',
-      error: 'Updating product failed'
-    });
+    //collect new info from the product given in the form
+    const editedName = req.body.name;
+    const editedPrice = req.body.price;
+    const editedCategory = req.body.category;
+    const editedImageUrl = req.file ? '/images/' + req.file.filename : '';
+    const editedInStock = req.body.inStock === 'on';
+    
+  // errors from validation
+  const validationErrors = validationResult(req);
+  if(!validationErrors.isEmpty()){
+    return res.status(400).render('admin', {
+        title: 'Admin Panel',
+        // an array from validation errors and collecting only an error messages
+        error: validationErrors.array().map(err => err.msg).join(', ')
+      });
   }
-};
+
+    try {
+      //save the product to the database
+      await Product.updateOne(
+        { _id: idUpdatingItem },
+        { $set: { name: editedName, price: editedPrice, category: editedCategory, imageUrl: editedImageUrl, inStock: editedInStock } }
+      );
+
+      //redirect back to the admin page to see the new product
+      res.redirect('/admin');
+    } catch (err) {
+      //if something goes wrong show error on the page
+      console.error('Error updating product:', err);
+      res.status(400).render('admin', {
+        title: 'Admin Panel',
+        error: 'Updating product failed'
+      });
+    }
+  }
+];

@@ -16,6 +16,8 @@
 
     <div class="file-upload-group">
       <label for="productImage" class="file-label"><strong>Change product image</strong></label>
+      {{#if products.imageUrl}}<img src="{{products.imageUrl}}" alt="{{products.name}}" class="product-image">
+      {{/if}}
       <input id="productImage" name="productImage" type="file" accept="image/*" class="custom-file-input">
     </div>
 
