@@ -23,5 +23,6 @@ router.get('/login', adminController.getLoginPage);
 router.post('/', upload.single('productImage'), adminController.postAddProduct);
 router.get('/edit/:id', adminController.getEditProduct);
 router.post('/update/:id', upload.single('productImage'), adminController.postUpdateProduct);
+router.post('/delete/:id', adminController.deleteProduct)
 
 module.exports = router;

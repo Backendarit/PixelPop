@@ -7,11 +7,17 @@ exports.getAdminPage = async (req, res) => {
     //get all products from the database
     const products = await Product.find();
 
+    //Find and end success message
+    const success = req.session.success;
+    delete req.session.success;
+
+
     //show the admin.handlebars page
     //convert products to simple objects so Handlebars can read them
     res.render('admin', {
       title: 'Admin Panel',
-      products: products.map(p => p.toObject())
+      products: products.map(p => p.toObject()),
+      success
     });
   } catch (err) {
     //if something goes wrong, show error message
@@ -140,15 +146,35 @@ exports.postUpdateProduct = [
         { $set: { name: editedName, price: editedPrice, category: editedCategory, imageUrl: editedImageUrl, inStock: editedInStock } }
       );
 
-      //redirect back to the admin page to see the new product
-      res.redirect('/admin');
-    } catch (err) {
-      //if something goes wrong show error on the page
-      console.error('Error updating product:', err);
-      res.status(400).render('admin', {
-        title: 'Admin Panel',
-        error: 'Updating product failed'
-      });
-    }
+    //redirect back to the admin page to see the new product
+    res.redirect('/admin');
+  } catch (err) {
+    //if something goes wrong show error on the page
+    console.error('Error updating product:', err);
+    res.status(400).render('admin', {
+      title: 'Admin Panel',
+      error: 'Updating product failed'
+    });
   }
+}
 ];
+
+//Delete Product
+exports.deleteProduct = async (req, res) => {
+  //Delete product by product id
+  const id = req.params.id;
+  try {
+    await Product.findByIdAndDelete(id);
+    res.status(200).json({
+      status: 'deleted',
+      id: id
+    });
+    req.session.success = 'Product has been deleted successfully.'; //Pop-up success message
+    res.redirect('/admin'); //back to admin
+  } 
+  //Error information
+  catch (err) { 
+    console.error('Error deleting product:', err);
+    res.status(404).json({ error: 'Not found' });
+  }
+} 
