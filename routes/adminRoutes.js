@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
+const ensureAuthenticated = require('../middleware/ensureAuthenticated');
 const path = require('path');
 
 // import multer for file upload
@@ -18,10 +19,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 //admin routes
-router.get('/', adminController.getAdminPage);
-router.get('/login', adminController.getLoginPage);
-router.post('/', upload.single('productImage'), adminController.postAddProduct);
-router.get('/edit/:id', adminController.getEditProduct);
-router.post('/update/:id', upload.single('productImage'), adminController.postUpdateProduct);
+router.get('/', ensureAuthenticated, adminController.getAdminPage);
+router.post('/', ensureAuthenticated, upload.single('productImage'), adminController.postAddProduct);
+router.get('/edit/:id', ensureAuthenticated, adminController.getEditProduct);
+router.post('/update/:id', ensureAuthenticated, upload.single('productImage'), adminController.postUpdateProduct);
 
 module.exports = router;
