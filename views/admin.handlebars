@@ -17,7 +17,14 @@
     <input id="price" name="price" type="number" step="0.01" required placeholder="Price">
 
     <label for="category" class="visually-hidden">Category</label>
-    <input id="category" name="category" type="text" placeholder="Category">
+    <select id="category" name="category" required>
+      <option value="">Choose a category</option>
+      <option value="phone">Phone</option>
+      <option value="tamagotchi">Tamagotchi</option>
+      <option value="ringtone">Ringtone</option>
+      <option value="camera">Camera</option>
+      <option value="mp3player">Mp3-player</option>
+    </select>
 
     <div class="file-upload-group">
       <label for="productImage" class="file-label"><strong>Product image</strong></label>

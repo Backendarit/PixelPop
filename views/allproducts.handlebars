@@ -3,7 +3,7 @@
     
     <div>
         <nav class="sidenavi">
-                <a href="/allproducts/" aria-label="All items listed">All items</a><br>
+                <a href="/allproducts/" aria-label="All items listed">All products</a><br>
                 <a href="/allproducts/findbycategory/?category=phone" aria-label="All phones listed">Phones</a><br>
                 <a href="/allproducts/findbycategory/?category=tamagotchi" aria-label="All tamagothcis listed">Tamagotchis</a><br>
                 <a href="/allproducts/findbycategory/?category=ringtone" aria-label="All ringtones listed">Ringtones</a><br>
@@ -30,8 +30,8 @@
                 </div>
                 <div>
                 <form action="/allproducts/addcart{{this._id}}" method="POST">
-                    <button type="submit" class="btn add" aria-label="Add {{this.name}} to the cart">Buy</button>
-                </form>
+                    <button type="button" class="btn add" aria-label="Add {{this.name}} to the cart">Buy</button>
+                </form> 
                 </div>
                 </article>
             {{/each}}

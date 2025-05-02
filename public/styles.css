@@ -154,7 +154,8 @@ body {
 }
 
 .admin-form input[type="text"],
-.admin-form input[type="number"] {
+.admin-form input[type="number"],
+.admin-form select {
   padding: 0.6rem;
   font-size: 1rem;
   border-radius: 6px;
@@ -209,7 +210,6 @@ body {
   cursor: pointer;
   transform: translateY(-3px);
 }
-
 
 
 
@@ -486,8 +486,8 @@ textarea:focus {
 
 .sidenavi {
   margin-top: 2rem; 
-  border: 2px solid #662D91;
-  background-color: #B9AFFB;
+  border: 2px solid #1F288D;
+  background-color: #FDEBFF;
   border-radius: 20px;
   width: 10em;
   padding: 1em;
@@ -498,10 +498,12 @@ textarea:focus {
 
 .sidenavi a {
   text-decoration: none;
+  color: #1F288D;
 }
 
 .sidenavi a:hover {
   text-decoration: underline;
+  color: #1F288D;
 }
 
 .btn.add {
