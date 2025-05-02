@@ -1,0 +1,20 @@
+<h1 class="product-title halo">Featured Products</h1>
+<div class="product-list" aria-label="List of all products">
+  {{#each featured}}
+    <article class="product-card" aria-labelledby="product-{{@index}}">
+      <img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image">
+      <div class="product-info">
+        <h2 id="product-{{@index}}">{{this.name}}</h2>
+        <p><strong>Price:</strong> {{this.price}} €</p>
+        {{#if this.category}}<p><strong>Category:</strong> {{this.category}}</p>{{/if}}
+        <p><strong>Availability:</strong>
+          {{#if this.inStock}}<span style="color:green;">In stock</span>
+          {{else}}<span style="color:red;">Out of stock</span>{{/if}}
+        </p>
+      </div>
+      <div>
+        <a href="/allproducts" class="btn add" aria-label="Go to Shop page for more products">Shop</a>
+      </div>
+    </article>
+  {{/each}}
+</div>

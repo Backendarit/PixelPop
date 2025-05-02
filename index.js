@@ -44,7 +44,8 @@ const Product = require('./models/Product');
 
 
 //Routes
-app.use('',require('./routes/contact'))
+app.use('/',require('./routes/homeRoutes'))//Homepage
+app.use('',require('./routes/contact'))//Contact
 app.use('/admin', adminRoutes); //admin product management
 app.use('/admin', adminAuthRoutes); //admin login and logout
 app.use('/allproducts', shopRoutes); //Shop
