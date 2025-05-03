@@ -8,12 +8,13 @@ module.exports = function(passport) {
         try {
           const user = await Admin.findOne({ username: username }); //find user by username
           if (!user) {
-            return done(null, false, { message: 'Incorrect username.' });
+            return done(null, false, { message: 'Invalid credentials' });
           }
-          const isMatch = await user.comparePassword(password); //compare passwords
+          const isMatch = await user.comparePassword(password);
           if (!isMatch) {
-            return done(null, false, { message: 'Incorrect password.' });
+            return done(null, false, { message: 'Invalid credentials' });
           }
+          
           return done(null, user); //login success
         } catch (err) {
           return done(err);

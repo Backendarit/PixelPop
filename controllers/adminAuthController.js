@@ -3,8 +3,11 @@ const { body, validationResult } = require('express-validator');
 
 //show login page
 exports.getLoginPage = (req, res) => {
-  res.render('admin-login', { title: 'Admin Login' });
-};
+    const error = req.session.error;
+    delete req.session.error;
+    res.render('admin-login', { title: 'Admin Login', error });
+  };
+  
 
 //handle login POST
 exports.postLogin = [
@@ -15,8 +18,7 @@ exports.postLogin = [
     .escape(),
   body('password')
     .trim()
-    .notEmpty().withMessage('Password is required.')
-    .escape(),
+    .notEmpty().withMessage('Password is required.'),
 
   //middleware function to handle result
   (req, res, next) => {
@@ -28,15 +30,12 @@ exports.postLogin = [
       });
     }
 
-    //use custom callback for better error handling
+    //passport authentication
     passport.authenticate('local', (err, user, info) => {
       if (err) return next(err);
       if (!user) {
-        //show error in UI if login failed
-        return res.render('admin-login', {
-          title: 'Admin Login',
-          errors: [{ msg: info.message || 'Invalid credentials' }]
-        });
+        req.session.error = info.message || 'Invalid credentials';
+        return res.redirect('/admin/login');
       }
 
       req.logIn(user, (err) => {
