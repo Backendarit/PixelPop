@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles.css">
   <link rel="icon" type="image/png" href="/images/favicon.png">
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
 
 </head>
 <body>
@@ -17,7 +18,9 @@
         <a href="/">Home</a>
         <a href="/allproducts">Shop</a>
         <a href="/contact">Contact</a>
-        <span class="heart-icon">💗</span>
+        <button id="heart" class="heart-button" aria-label="Sparkle time!">
+          <img src="/images/favicon.png" alt="Pixel Heart" />
+        </button>
       </div>
       <div class="header-bd">
         <img src="/images/pixelpop.png" alt="Pixel Pop logo" class="logo"/>
@@ -50,7 +53,22 @@
     </footer>
 
   </div>
+  <script> //Glitter from Heart button
+    document.getElementById('heart').addEventListener('click', function(e) {
+      for (let i = 0; i < 50; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
 
+        // Satunnainen paikka näytöllä
+        sparkle.style.left = Math.random() * window.innerWidth + 'px';
+        sparkle.style.top = Math.random() * window.innerHeight + 'px';
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 1500);
+      }
+    });
+  </script>
   <script>
     function confirmDelete(productName) {
       return confirm(`Are you sure you want to delete "${productName}"?`);

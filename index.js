@@ -49,6 +49,9 @@ app.use('',require('./routes/contact'))//Contact
 app.use('/admin', adminRoutes); //admin product management
 app.use('/admin', adminAuthRoutes); //admin login and logout
 app.use('/allproducts', shopRoutes); //Shop
+app.use((req, res) => {//404 must be last!
+  res.status(404).render('404', { title: 'Page Not Found' });
+});
 
 
 //Connect to handelbars
