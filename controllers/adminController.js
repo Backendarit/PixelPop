@@ -7,17 +7,11 @@ exports.getAdminPage = async (req, res) => {
     //get all products from the database
     const products = await Product.find();
 
-    //Find and end success message
-    const success = req.session.success;
-    delete req.session.success;
-
-
     //show the admin.handlebars page
     //convert products to simple objects so Handlebars can read them
     res.render('admin', {
       title: 'Admin Panel',
       products: products.map(p => p.toObject()),
-      success
     });
   } catch (err) {
     //if something goes wrong, show error message
@@ -171,17 +165,32 @@ exports.deleteProduct = async (req, res) => {
   //Delete product by product id
   const id = req.params.id;
   try {
-    await Product.findByIdAndDelete(id);
-    res.status(200).json({
+    const deletedProduct = await Product.findByIdAndDelete(id);
+
+    if (!deletedProduct) { //Error when product cannot be found
+      const products = await Product.find();
+      return res.status(404).render('admin', {
+        title: 'Admin Panel',
+        products: products.map(p => p.toObject()),
+        error: 'Product not found or already deleted.'
+      });
+    }
+    //Deletion is succesfull
+    const products = await Product.find(); //show products
+    res.status(200).render('admin', {
       status: 'deleted',
-      id: id
+      products: products.map(p => p.toObject()),
+      success: 'Product has been deleted successfully.'//Pop-up success message
     });
-    req.session.success = 'Product has been deleted successfully.'; //Pop-up success message
-    res.redirect('/admin'); //back to admin
   } 
-  //Error information
-  catch (err) { 
+  //Error information upon other fail
+  catch (err) {
     console.error('Error deleting product:', err);
-    res.status(404).json({ error: 'Not found' });
+    const products = await Product.find();
+    res.status(500).render('admin', {
+      title: 'Admin Panel',
+      products: products.map(p => p.toObject()),
+      error: 'Product deletion failed.'
+    });
   }
-} 
+};
