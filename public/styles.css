@@ -523,7 +523,7 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  box-sizing: border-box; /* tärkeä, että padding ei riko leveyttä */
+  box-sizing: border-box; 
 }
   .main-nav {
     position: relative;
@@ -699,6 +699,17 @@ textarea:focus {
     font-weight: bold;
     font-size: 15px;
   }
+
+  .footer-nav a[href="/admin/login"] {
+    color: black !important;
+    text-decoration: underline;
+  }
+  
+  .footer-nav a[href="/admin/login"]:hover {
+    color: #1F288D;
+    text-decoration: underline;
+  }
+  
   
   .footer-content {
     padding-right: 1rem;
