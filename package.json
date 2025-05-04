@@ -1,5 +1,5 @@
 {
-  "name": "wfp2025",
+  "name": "PixelPop",
   "version": "1.0.0",
   "description": "Web Framework Project",
   "main": "index.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heli23011/wfp2025.git"
+    "url": "git+https://github.com/Backendarit/PixelPop.git"
   },
   "author": "Henna-Riina Anttila, Maisa Tuomenpuro, Heli Pyykkönen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/heli23011/wfp2025/issues"
+    "url": "https://github.com/Backendarit/PixelPop/issues"
   },
-  "homepage": "https://github.com/heli23011/wfp2025#readme",
+  "homepage": "https://github.com/Backendarit/PixelPop#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "dotenv": "^16.5.0",
