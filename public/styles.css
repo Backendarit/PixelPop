@@ -279,7 +279,16 @@ body {
   max-width: 600px;
   margin: 6rem auto 1rem auto;
   display: block;
+
 }
+
+a[href="/admin"]:focus img {
+  outline: 3px solid #ff66cc;
+  outline-offset: 6px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px #ff66cc;
+}
+
 
 .logout-button {
   background-color: #9c144a;
@@ -304,6 +313,13 @@ body {
   right: 1.5rem;
   z-index: 10;
 }
+
+a[href="/admin/login"] {
+  display: inline-block;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 
 /* When screen is 768px or narrower (tablet & mobile), move logout under banner */
 @media (max-width: 768px) {
