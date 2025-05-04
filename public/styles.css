@@ -330,19 +330,18 @@ body {
   margin-top: 4rem;
   margin-bottom: 1.5rem;
   text-shadow:
-    0 0 5px #AFADFB,
-    0 0 10px #AFADFB,
-    0 0 15px #AFADFB;
+    0 0 6px #d8b4fe,
+    0 0 12px #a855f7;
+  transition: all 0.3s ease-in-out;
 }
 
 .product-title.halo:hover {
   text-shadow:
-    0 0 8px #AFADFB,
-    0 0 16px #AFADFB,
-    0 0 24px #AFADFB;
-  transform: scale(1.02);
-  transition: all 0.3s ease-in-out;
+    0 0 8px #d8b4fe,
+    0 0 16px #a855f7;
+  cursor: default;
 }
+
 
 
 .product-list {
@@ -748,4 +747,18 @@ textarea:focus {
     padding: 0rem 1rem 4rem;
     max-width: 600px;
     margin: auto;
+  }
+
+  /*HOME PAGE*/
+  .intro-text {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    color: #1f1f1f;
+    text-shadow:
+    0 0 6px #d8b4fe,
+    0 0 12px #a855f7;
+  
   }
