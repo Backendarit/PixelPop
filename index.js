@@ -32,15 +32,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-
 //import routes
 const adminRoutes = require('./routes/adminRoutes');
 const adminAuthRoutes = require('./routes/adminAuthRoutes');
 const shopRoutes = require('./routes/shopRoutes');
 
+
 //import models
 const Product = require('./models/Product');
-
 
 
 //Routes
@@ -60,7 +59,6 @@ app.engine('handlebars', exphbs.engine({
 }));
 
 app.set('view engine', 'handlebars');
-
 
 
 //Mongo DB connection

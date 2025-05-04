@@ -6,19 +6,19 @@
 
   <form action="/admin/update/{{products._id}}" method="POST" enctype="multipart/form-data" class="admin-form">
     <label for="name" class="visually-hidden">Product name</label>
-    <input id="name" name="name" type="text" required value="{{products.name}}">
+    <input id="name" name="name" type="text" required value="{{products.name}}"  aria-label="Edit product name">
 
     <label for="price" class="visually-hidden">Price</label>
-    <input id="price" name="price" type="number" step="0.01" required value="{{products.price}}">
+    <input id="price" name="price" type="number" step="0.01" required value="{{products.price}}" aria-label="Edit price">
 
     <label for="category" class="visually-hidden">Category</label>
-    <select id="category" name="category" required>
+    <select id="category" name="category" required aria-label="Choose product category">
       <option value="">Choose a category</option>
-      <option value="phone">Phone</option>
-      <option value="tamagotchi">Tamagotchi</option>
-      <option value="ringtone">Ringtone</option>
-      <option value="camera">Camera</option>
-      <option value="mp3player">Mp3-player</option>
+      <option value="phone"  aria-label="Category phone">Phone</option>
+      <option value="tamagotchi" aria-label="Category tamagotchi">Tamagotchi</option>
+      <option value="ringtone" aria-label="Category ringtone">Ringtone</option>
+      <option value="camera" aria-label="Category camera">Camera</option>
+      <option value="mp3player" aria-label="Category mp3-palyer">Mp3-player</option>
     </select>
 
     <div class="file-upload-group">
