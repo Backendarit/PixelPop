@@ -314,11 +314,12 @@ a[href="/admin"]:focus img {
   z-index: 10;
 }
 
-a[href="/admin/login"] {
+.login-page-banner-link {
   display: inline-block;
   max-width: 600px;
   margin: 0 auto;
 }
+
 
 
 /* When screen is 768px or narrower (tablet & mobile), move logout under banner */
