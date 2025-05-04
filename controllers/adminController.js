@@ -146,9 +146,14 @@ exports.postUpdateProduct = [
           { $set: { name: editedName, price: editedPrice, category: editedCategory, imageUrl: editedImageUrl, inStock: editedInStock } }
         );
       }
-
+ 
     //redirect back to the admin page to see the new product
-    res.redirect('/admin');
+    const products = await Product.find();
+    res.status(200).render('admin', {
+      title: 'Admin Panel',
+      products: products.map(p => p.toObject()),
+      success: 'Product has been updated successfully.'
+    });
   } catch (err) {
     //if something goes wrong show error on the page
     console.error('Error updating product:', err);

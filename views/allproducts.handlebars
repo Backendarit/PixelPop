@@ -18,7 +18,7 @@
             {{#each products}}
                 <article class="product-card" aria-labelledby="product-{{@index}}">
                 <img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image">
-                 <div class="product-info">
+                 <div class="product-info" tabindex="0">
                     <h3 id="product-{{@index}}">{{this.name}}</h3>
                     <p><strong>Price:</strong> {{this.price}} €</p>
                 {{#if this.category}}<p><strong>Category:</strong> {{this.category}}</p>{{/if}}
@@ -28,11 +28,11 @@
                 {{else}}<span style="color:red;">Out of stock</span>{{/if}}
                 </p>
                 </div>
-                <div>
+                <!-- <div>
                 <form action="/allproducts/addcart{{this._id}}" method="POST">
                     <button type="button" class="btn add" aria-label="Add {{this.name}} to the cart">Buy</button>
                 </form> 
-                </div>
+                </div> -->
                 </article>
             {{/each}}
             </section>

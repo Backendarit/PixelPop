@@ -48,5 +48,4 @@ exports.getProductsByCathegory = async (req, res) => {
       });
     }
   };
-  
-  // add to the cart
+ 
