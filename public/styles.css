@@ -1,5 +1,5 @@
 body {
-  background-image: url('/images/background.png');
+  background-image: url('/images/background03.png');
   background-repeat: repeat;
   font-family: 'Karma', serif;
   margin: 0;
@@ -574,10 +574,15 @@ textarea:focus {
     cursor: pointer;
     padding: 0;
   }
+
   .heart-button img {
     max-height: 35px;
   }
-  
+
+  .heart-button:hover {
+    transform: scale(1.05);
+  }
+
   .header-bd {
     background-image: url('/images/headerbackdrop.png');
     background-position: center;
@@ -592,6 +597,10 @@ textarea:focus {
   .logo {
     max-width: 220px;
     height: auto;
+  }
+
+  .logo:hover {
+    transform: scale(1.05);
   }
 
   .sparkle {
@@ -658,7 +667,7 @@ textarea:focus {
   }
   
   .send-button {
-    background: #825DD0;
+    background: #623ac2;
     color: white;
     font-weight: bold;
     font-size: 1.2rem;
@@ -670,7 +679,8 @@ textarea:focus {
   }
   
   .send-button:hover {
-    background: #612dd1;
+      transform: scale(1.05);
+      box-shadow: 0 0 6px #ccc;
   }
 
   .success-message {
