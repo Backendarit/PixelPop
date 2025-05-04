@@ -10,8 +10,8 @@
    </ul>
 {{/if}}
 
-<div class="contact-container">
-  <h1 class="contact-title">Contact Us</h1>
+<div class="contact-container" role="form" aria-labelledby="contact-title">
+  <h1 class="contact-title" id="contact-title">Contact Us</h1>
 
   <form action="/contact" method="POST" class="contact-form">
 
@@ -27,7 +27,27 @@
     <label for="message" class="visually-hidden">Message</label>
     <textarea id="message" name="message" placeholder="Message" rows="5" required>{{formData.message}}</textarea>
 
-    <button type="submit" class="send-button">Send</button>
+    <button type="submit" class="send-button" aria-label="Send contact form">Send</button>
 
   </form>
 </div>
+
+<section aria-labelledby="contact-info" class="contact-container">
+  <h2 id="contact-info">Contact Information</h2>
+
+  <div class="contact-cards">
+    <div class="contact-card" role="group" aria-label="Email contact">
+      <a href="mailto:info.pixelpop200@gmail.com">
+        <img src="/images/email2.png" alt="" aria-hidden="true" />
+        <p><strong>E-mail us at<br>info@pixelpop.com</strong></p>
+      </a>
+    </div>
+
+    <div class="contact-card" role="group" aria-label="Social media">
+      <a href="https://instagram.com/" target="_blank" rel="noopener">
+        <img src="/images/instagram2.png" alt="" aria-hidden="true" />
+        <p><strong>Follow our socials<br>@pixelpop</strong></p>
+      </a>
+    </div>
+  </div>
+</section>

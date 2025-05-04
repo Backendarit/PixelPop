@@ -620,15 +620,15 @@ textarea:focus {
     background-image: linear-gradient(to bottom right, #AFADFB, #FBB0DD);
     border: 2px solid #662D91;
     border-radius: 40px;
-    max-width: 600px;
+    max-width: 750px;
     margin: 2rem auto;
-    padding: 1rem;
+    padding: 1rem 1rem 2rem;
     width: 100%;
+    text-align: center;
   }
   
   
   .contact-title {
-    text-align: center;
     font-weight: bold;
     font-size: 20px;
     border: 2px solid #662D91;
@@ -699,7 +699,25 @@ textarea:focus {
   .error-messages li {
     margin-bottom: 0.5rem;
   }
+  .contact-cards {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   
+  .contact-card {
+    background: linear-gradient(to top, #d48ce2, #d5a4f5);
+    padding: 2rem 1rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid #333;
+    width: 250px;
+    text-align: center;
+  }
+  .contact-card a {
+    text-decoration: none;
+    color: #000;
+  }
 
   /*Footer*/
   .site-footer {
