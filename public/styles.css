@@ -506,6 +506,13 @@ textarea:focus {
   color: #1F288D;
 }
 
+[tabindex="0"]:focus {
+  outline: 3px solid #ff66cc;
+  outline-offset: 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px #ff66cc;
+}
+
 .btn.add {
   background-color: #623ac2;
   color: white;
