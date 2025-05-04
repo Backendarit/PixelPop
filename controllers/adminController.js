@@ -195,7 +195,7 @@ exports.deleteProduct = async (req, res) => {
     res.status(500).render('admin', {
       title: 'Admin Panel',
       products: products.map(p => p.toObject()),
-      error: 'Product deletion failed.'
+      error: 'Unexpected error occurred while deleting product.'
     });
   }
 };

@@ -69,10 +69,11 @@ console.log('Connecting to DB with URI:', dbURI);
 
 mongoose.connect(dbURI)
   .then(() => {
-    const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => console.log("Listening to " + PORT));
     console.log('Connected to DB');
   })
   .catch((err) => {
     console.error('Connection error:', err);
   });
+
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log("Listening to " + PORT));
