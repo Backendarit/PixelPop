@@ -17,8 +17,8 @@ body {
   height: 1px;
   overflow: hidden;
   z-index: 1000;
-  background-color: #EAD7FA; /* laventelin tausta */
-  color: #333; /* tumma sininen teksti */
+  background-color: #EAD7FA;
+  color: #333;
   padding: 8px 16px;
   font-weight: bold;
   border: 2px solid #A855F7;
