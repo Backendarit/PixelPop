@@ -580,6 +580,13 @@ textarea:focus {
   gap: 1rem;
   box-sizing: border-box; 
 }
+
+@media (max-width: 600px) {
+  .site-header {
+    width: calc(100% - 2rem);
+}
+}
+
   .main-nav {
     position: relative;
     display: flex;
@@ -666,8 +673,17 @@ textarea:focus {
     padding: 1rem 1rem 2rem;
     width: 100%;
     text-align: center;
+      box-sizing: border-box;
   }
   
+  @media (max-width: 600px) {
+    .contact-container {
+      border-radius: 20px;
+      padding: 1rem;
+      margin: 1rem;
+      width: calc(100% - 2rem);
+    }
+  }
   
   .contact-title {
     font-weight: bold;
@@ -749,7 +765,7 @@ textarea:focus {
   }
   
   .contact-card {
-    background: linear-gradient(to top, #d48ce2, #d5a4f5);
+    background: linear-gradient(to top, #E497ED, #78C9FB);
     padding: 2rem 1rem 1rem;
     border-radius: 1rem;
     border: 1px solid #333;
@@ -759,6 +775,10 @@ textarea:focus {
   .contact-card a {
     text-decoration: none;
     color: #000;
+  }
+
+  .contact-card img {
+    width: 70px;
   }
 
   /*Footer*/
