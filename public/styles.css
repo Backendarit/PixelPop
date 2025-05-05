@@ -381,8 +381,8 @@ a[href="/admin"]:focus img {
   border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  max-width: 500px;
-  width: auto;     
+  max-width: 340px;
+  width: 100%;     
   margin: 0 auto;
   
 }
