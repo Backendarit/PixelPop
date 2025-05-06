@@ -380,7 +380,18 @@ body {
   cursor: default;
 }
 
-
+.shopslogan {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1F288D;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-shadow:
+    0 0 6px #d8b4fe,
+    0 0 12px #a855f7;
+  transition: all 0.3s ease-in-out;  
+}
 
 .product-list {
   display: grid;
