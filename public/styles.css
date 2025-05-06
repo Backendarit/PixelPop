@@ -17,8 +17,8 @@ body {
   height: 1px;
   overflow: hidden;
   z-index: 1000;
-  background-color: #EAD7FA; /* laventelin tausta */
-  color: #333; /* tumma sininen teksti */
+  background-color: #EAD7FA; 
+  color: #333; 
   padding: 8px 16px;
   font-weight: bold;
   border: 2px solid #A855F7;
@@ -314,13 +314,6 @@ body {
 
 }
 
-a[href="/admin"]:focus img {
-  outline: 3px solid #ff66cc;
-  outline-offset: 6px;
-  border-radius: 8px;
-  box-shadow: 0 0 12px #ff66cc;
-}
-
 
 .logout-button {
   background-color: #9c144a;
@@ -346,11 +339,7 @@ a[href="/admin"]:focus img {
   z-index: 10;
 }
 
-.login-page-banner-link {
-  display: inline-block;
-  max-width: 600px;
-  margin: 0 auto;
-}
+
 
 
 
@@ -414,7 +403,7 @@ a[href="/admin"]:focus img {
   padding: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   max-width: 340px;
-  width: 100%;     
+  width: calc(100% - 2rem);     
   margin: 0 auto;
   
 }
@@ -580,6 +569,13 @@ textarea:focus {
   gap: 1rem;
   box-sizing: border-box; 
 }
+
+@media (max-width: 600px) {
+  .site-header {
+    width: calc(100% - 2rem);
+}
+}
+
   .main-nav {
     position: relative;
     display: flex;
@@ -666,8 +662,17 @@ textarea:focus {
     padding: 1rem 1rem 2rem;
     width: 100%;
     text-align: center;
+      box-sizing: border-box;
   }
   
+  @media (max-width: 600px) {
+    .contact-container {
+      border-radius: 20px;
+      padding: 1rem;
+      margin: 1rem;
+      width: calc(100% - 2rem);
+    }
+  }
   
   .contact-title {
     font-weight: bold;
@@ -749,16 +754,20 @@ textarea:focus {
   }
   
   .contact-card {
-    background: linear-gradient(to top, #d48ce2, #d5a4f5);
+    background: linear-gradient(to top, #E497ED, #78C9FB);
     padding: 2rem 1rem 1rem;
     border-radius: 1rem;
-    border: 1px solid #333;
+    border: 2px solid #6A0DAD;
     width: 250px;
     text-align: center;
   }
   .contact-card a {
     text-decoration: none;
     color: #000;
+  }
+
+  .contact-card img {
+    width: 70px;
   }
 
   /*Footer*/
