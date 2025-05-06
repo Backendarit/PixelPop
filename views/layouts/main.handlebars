@@ -20,7 +20,7 @@
         <a href="/">Home</a>
         <a href="/allproducts">Shop</a>
         <a href="/contact">Contact</a>
-        <button id="heart" class="heart-button" aria-label="Sparkle time!">
+        <button id="heart" class="heart-button" aria-label="Sparkle time!" title="Spread some sparkle!">
           <img src="/images/favicon.png" alt="Pixel Heart" />
         </button>
       </div>
@@ -58,8 +58,14 @@
     </footer>
 
   </div>
-  <script> //Glitter from Heart button
+  <audio id="sparkleSound" src="/sounds/sparkle.wav" preload="auto"></audio>
+  <script> //Sparckle from Heart button
     document.getElementById('heart').addEventListener('click', function(e) {
+      const sparkleSound = document.getElementById('sparkleSound');
+      sparkleSound.currentTime = 0; //if clicked fast, starts again
+      sparkleSound.currentTime = 0.2; // aloittaa 200 ms kohdasta
+      sparkleSound.play();
+
       for (let i = 0; i < 50; i++) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
@@ -74,11 +80,17 @@
       }
     });
   </script>
+  
+
+
   <script>
     function confirmDelete(productName) {
       return confirm(`Are you sure you want to delete "${productName}"?`);
     }
   </script>
+
+
+
 </body>
 </html>
 
