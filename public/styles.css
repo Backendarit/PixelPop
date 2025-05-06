@@ -764,7 +764,7 @@ textarea:focus {
   /*Footer*/
   .site-footer {
     width: 100%;
-    max-width: 1000px;
+    max-width: 880px;
     margin: 1rem auto;
     padding: 1rem;
     border-radius: 20px;
