@@ -326,6 +326,7 @@ body {
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: background-color 0.2s ease;
+  width: 150px;
 }
 
 .logout-button:hover {
@@ -339,6 +340,32 @@ body {
   z-index: 10;
 }
 
+.admin-stats {
+  background: linear-gradient(to bottom right, #B8AEF9, #d5ccff);
+  border: 2px solid #003366;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1.5rem auto;
+  max-width: 120px;
+  max-height: 175px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(160, 127, 207, 0.4);
+  color: #392451;
+}
+
+.admin-stats h2 {
+  font-size: 1.6rem;
+  margin: 10px auto;
+}
+
+.admin-stats img {
+  max-height: 35px;
+}
+
+.admin-stats p {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
 
 
 
@@ -513,10 +540,10 @@ a:focus,
 input:focus,
 select:focus,
 textarea:focus {
-  outline: 3px solid #ff66cc;
+  outline: 3px solid #75004e;
   outline-offset: 3px;
   border-radius: 4px;
-  box-shadow: 0 0 10px #ff66cc;
+  box-shadow: 0 0 10px #f0c;
 }
 
 /*Shop*/
@@ -859,3 +886,5 @@ textarea:focus {
     0 0 12px #a855f7;
   
   }
+
+  

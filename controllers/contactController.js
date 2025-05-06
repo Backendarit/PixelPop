@@ -25,7 +25,7 @@ const validateForm = [
         .trim()
         .matches(/^[a-zA-ZÀ-ÿ\s'-]+$/).withMessage('Name can only contain letters or spaces.')
         .notEmpty().withMessage('Name is required.') //
-        .escape(),
+        .escape(),//sanitation
     body('email')
         .trim()
         .notEmpty().withMessage('Email is required.')
@@ -38,7 +38,7 @@ const validateForm = [
         .escape(),
     body('message')
         .trim()
-        .isLength({ min: 10 }).withMessage('Message must be at least 10 characters')
+ //     .isLength({ min: 10 }).withMessage('Message must be at least 10 characters')
         .isLength({ max: 1000 }).withMessage('Message must be under 1000 characters')
         .escape()
     ];

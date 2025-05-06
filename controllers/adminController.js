@@ -1,17 +1,20 @@
 const Product = require('../models/Product');
 const { body, validationResult } = require('express-validator');
+const Stats = require('../models/Stats');
 
 //show the admin page when user goes to /admin
 exports.getAdminPage = async (req, res) => {
   try {
-    //get all products from the database
+    //get all products and stats from the database
     const products = await Product.find();
+    const stats = await Stats.findOne();
 
     //show the admin.handlebars page
     //convert products to simple objects so Handlebars can read them
     res.render('admin', {
       title: 'Admin Panel',
       products: products.map(p => p.toObject()),
+      heartClicks: stats?.heartClicks || 0
     });
   } catch (err) {
     //if something goes wrong, show error message
@@ -199,3 +202,18 @@ exports.deleteProduct = async (req, res) => {
     });
   }
 };
+
+//Heart stat counter
+exports.heartClicks = async (req, res) => {
+  try {
+    const stat = await Stats.findOne() || new Stats();
+    stat.heartClicks += 1;
+    await stat.save();
+    res.status(200);
+  } 
+  catch (err) {
+    console.error('Heart click error:', err);
+    res.status(500);
+  }
+}
+

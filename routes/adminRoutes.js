@@ -24,6 +24,7 @@ router.post('/', ensureAuthenticated, upload.single('productImage'), adminContro
 router.get('/edit/:id', ensureAuthenticated, adminController.getEditProduct);
 router.post('/update/:id', ensureAuthenticated, upload.single('productImage'), adminController.postUpdateProduct);
 router.post('/delete/:id', ensureAuthenticated, adminController.deleteProduct);
+router.post('/heart-click', ensureAuthenticated, adminController.heartClicks);
 
 
 module.exports = router;

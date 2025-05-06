@@ -62,26 +62,32 @@
   <script> //Sparckle from Heart button
     document.getElementById('heart').addEventListener('click', function(e) {
       const sparkleSound = document.getElementById('sparkleSound');
-      sparkleSound.currentTime = 0; //if clicked fast, starts again
-      sparkleSound.currentTime = 0.2; // aloittaa 200 ms kohdasta
+      sparkleSound.currentTime = 0.2; //if clicked fast, starts again
       sparkleSound.play();
 
+      //Makes 50 sparks
       for (let i = 0; i < 50; i++) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
 
-        // Satunnainen paikka näytöllä
+        //Makes sparks go to random places
         sparkle.style.left = Math.random() * window.innerWidth + 'px';
         sparkle.style.top = Math.random() * window.innerHeight + 'px';
-
         document.body.appendChild(sparkle);
-
         setTimeout(() => sparkle.remove(), 1500);
       }
     });
   </script>
   
-
+<script> //Sent Stats to admin routes
+  document.getElementById('heart').addEventListener('click', function () {
+    fetch('/admin/heart-click', {
+      method: 'POST'
+    }).catch(err => {
+      console.error('Heart click failed:', err);
+    });
+  });
+</script>
 
   <script>
     function confirmDelete(productName) {
