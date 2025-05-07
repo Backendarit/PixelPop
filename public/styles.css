@@ -438,8 +438,9 @@ body {
   margin-top: 1rem;
   margin-bottom: 1rem;
   text-shadow:
-    0 0 6px #d8b4fe,
-    0 0 12px #a855f7;
+  0 0 6px #d8b4fe,
+  0 0 10px #e9c9ff,
+  0 0 14px #f3dcff;
   transition: all 0.3s ease-in-out;  
 }
 
