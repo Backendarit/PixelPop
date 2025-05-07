@@ -113,7 +113,6 @@ exports.postUpdateProduct = [
   // trim whitespaces, check not empty/is numeric, escape for transforming special HTML characters (XSS)
   body('name').trim().notEmpty().withMessage('Product name required.').escape(),
   body('price').trim().isNumeric().withMessage('Please give a number.').escape(),
-  body('category').trim().notEmpty().withMessage('Category required.').escape(),
   
   async (req, res) => {
     // get id from url
@@ -138,7 +137,17 @@ exports.postUpdateProduct = [
 
     try {
       //save the product to the database
-      if(!editedImageUrl){
+      if(!editedImageUrl && !editedCategory) {
+        await Product.updateOne(
+          { _id: idUpdatingItem },
+          { $set: { name: editedName, price: editedPrice, inStock: editedInStock } }
+        );
+      } else if(!editedCategory){
+        await Product.updateOne(
+          { _id: idUpdatingItem },
+          { $set: { name: editedName, price: editedPrice, imageUrl: editedImageUrl, inStock: editedInStock } }
+        );
+      } else if(!editedImageUrl){
         await Product.updateOne(
           { _id: idUpdatingItem },
           { $set: { name: editedName, price: editedPrice, category: editedCategory, inStock: editedInStock } }
