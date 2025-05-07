@@ -20,7 +20,7 @@
             {{#each products}}
                 <article class="product-card" aria-labelledby="product-{{@index}}">
                 <img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image">
-                 <div class="product-info" tabindex="0">
+                 <div class="product-info">
                     <h3 id="product-{{@index}}">{{this.name}}</h3>
                     <p><strong>Price:</strong> {{this.price}} €</p>
                 {{#if this.category}}<p><strong>Category:</strong> {{this.category}}</p>{{/if}}
