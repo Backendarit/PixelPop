@@ -365,7 +365,6 @@ body {
   border: 2px solid #003366;
   border-radius: 12px;
   padding: 1rem;
-  margin: 1.5rem auto;
   max-width: 120px;
   max-height: 175px;
   text-align: center;
@@ -387,6 +386,11 @@ body {
   margin-bottom: 12px;
 }
 
+.side-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 
 
 
@@ -564,6 +568,14 @@ a:focus,
 input:focus,
 select:focus,
 textarea:focus {
+  outline: 3px solid #75004e;
+  outline-offset: 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px #f0c;
+}
+
+
+[tabindex="0"]:focus {
   outline: 3px solid #75004e;
   outline-offset: 3px;
   border-radius: 4px;
@@ -754,7 +766,9 @@ textarea:focus {
     font-size: 1rem;
   }
   
-  .contact-form label {
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #444; /* Tummempi placeholder */
     font-weight: bold;
   }
   

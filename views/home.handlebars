@@ -1,10 +1,10 @@
 <p class="intro-text">The future of retro – your go-to store for nostalgic tech treasures!</p>
 
 <h1 class="product-title halo">Featured Products</h1>
-<div class="product-list" aria-label="List of all products">
+<div class="product-list">
   {{#each featured}}
     <article class="product-card" aria-labelledby="product-{{@index}}">
-      <img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image">
+      <img src="{{this.imageUrl}}" alt="" class="product-image">
       <div class="product-info">
         <h2 id="product-{{@index}}">{{this.name}}</h2>
         <p><strong>Price:</strong> {{this.price}} €</p>
@@ -15,7 +15,7 @@
         </p>
       </div>
       <div>
-        <a href="/allproducts" class="btn add" aria-label="Go to Shop page for more products">Shop</a>
+        <a href="/allproducts" class="btn add">Shop</a>
       </div>
     </article>
   {{/each}}
