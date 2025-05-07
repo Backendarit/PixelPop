@@ -153,6 +153,26 @@ body {
   overflow: hidden;
 }
 
+/* Admin login form placeholders */
+.login-form input::placeholder {
+  color: #444;
+  font-weight: bold;
+}
+
+/* Admin add product form placeholders */
+.admin-form input::placeholder,
+.admin-form select::placeholder,
+.admin-form textarea::placeholder {
+  color: #444;
+  font-weight: bold;
+}
+
+.admin-form input::placeholder,
+.admin-form select,
+.admin-form select option[value=""] {
+  color: #444;
+  font-weight: bold;
+}
 
 
 
@@ -389,23 +409,26 @@ body {
 /* Product List */
 .product-title.halo {
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #1F288D;
-  margin-top: 4rem;
+  margin-top: 2rem;
   margin-bottom: 1.5rem;
   text-shadow:
     0 0 6px #d8b4fe,
-    0 0 12px #a855f7;
+    0 0 10px #e9c9ff,
+    0 0 14px #f3dcff;
   transition: all 0.3s ease-in-out;
 }
 
 .product-title.halo:hover {
   text-shadow:
-    0 0 8px #d8b4fe,
-    0 0 16px #a855f7;
+    0 0 8px #e2c4ff,
+    0 0 16px #f1d8ff,
+    0 0 24px #f9eaff;
   cursor: default;
 }
+
 
 .shopslogan {
   text-align: center;
@@ -880,10 +903,12 @@ textarea:focus {
     font-weight: 700;
     margin-top: 1.5rem;
     margin-bottom: 2rem;
-    color: #1f1f1f;
+    color: #1F288D;
     text-shadow:
-    0 0 6px #d8b4fe,
-    0 0 12px #a855f7;
+      0 0 6px #d8b4fe,
+      0 0 10px #e9c9ff,
+      0 0 14px #f3dcff;
+  
   
   }
 

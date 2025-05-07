@@ -13,6 +13,7 @@
 <img src="/images/admin_panel.png" alt="" aria-hidden="true" class="admin-image">
 
   <form action="/admin" method="POST" enctype="multipart/form-data" class="admin-form">
+    <h2 class="product-title halo">Add Product</h2>
     <label for="name" class="visually-hidden">Product name</label>
     <input id="name" name="name" type="text" required placeholder="Product name">
 
@@ -20,14 +21,15 @@
     <input id="price" name="price" type="number" step="0.01" required placeholder="Price">
 
     <label for="category" class="visually-hidden">Category</label>
-    <select id="category" name="category" required aria-label="Choose product category">
-      <option value="">Choose a category</option>
-      <option value="phone" aria-label="Category phone">Phone</option>
-      <option value="tamagotchi" aria-label="Category tamagotchi">Tamagotchi</option>
-      <option value="ringtone" aria-label="Category ringtone">Ringtone</option>
-      <option value="camera" aria-label="Category camera">Camera</option>
-      <option value="mp3player" aria-label="Category mp3-palyer">Mp3-player</option>
-    </select>
+   <select id="category" name="category" required aria-label="Choose product category">
+      <option value="" disabled selected hidden>Choose a category</option>
+      <option value="phone">Phone</option>
+      <option value="tamagotchi">Tamagotchi</option>
+      <option value="ringtone">Ringtone</option>
+      <option value="camera">Camera</option>
+      <option value="mp3player">Mp3-player</option>
+  </select>
+
 
     <div class="file-upload-group">
       <label for="productImage" class="file-label"><strong>Product image</strong></label>
