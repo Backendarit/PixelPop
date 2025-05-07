@@ -34,7 +34,7 @@ exports.postLogin = [
     passport.authenticate('local', (err, user, info) => {
       if (err) return next(err);
       if (!user) {
-        req.session.error = info.message || 'Invalid credentials';
+        req.session.error = info.message || 'Login failed: Incorrect username or password';
         return res.redirect('/admin/login');
       }
 
