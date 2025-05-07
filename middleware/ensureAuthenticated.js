@@ -1,9 +1,10 @@
-//ensure user is authenticated before allowing access to admin page
-
+//ensure user is authenticated before allowing access to admin routes
 module.exports = function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-      return next(); // user is logged in
-    }
-    res.redirect('/admin/login'); // redirect to login if not logged in
-  };
-  
+  if (req.isAuthenticated()) {
+    return next(); // User is logged in, allow access
+  }
+
+  //save error message to show on login page
+  req.session.error = 'Your session has expired. Please log in again.';
+  res.redirect('/admin/login'); // Redirect to login page
+};

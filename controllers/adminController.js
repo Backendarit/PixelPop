@@ -5,6 +5,7 @@ const Stats = require('../models/Stats');
 //show the admin page when user goes to /admin
 exports.getAdminPage = async (req, res) => {
   try {
+    res.set('Cache-Control', 'no-store');
     //get all products and stats from the database
     const products = await Product.find();
     const stats = await Stats.findOne();

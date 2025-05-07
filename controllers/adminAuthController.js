@@ -3,20 +3,30 @@ const { body, validationResult } = require('express-validator');
 
 //show login page
 exports.getLoginPage = (req, res) => {
-    const error = req.session.error;
-    delete req.session.error;
-    res.render('admin-login', { title: 'Admin Login', error });
-  };
-  
+  // if user is already logged in, redirect to admin page
+  if (req.isAuthenticated()) {
+    return res.redirect('/admin');
+  }
+
+  const error = req.session.error;
+  delete req.session.error;
+
+  res.render('admin-login', {
+    title: 'Admin Login',
+    error 
+  });
+};
+
+
 
 //handle login POST
 exports.postLogin = [
   // Validate and sanitize input
-  body('username')
+  body('user_name')
     .trim()
     .notEmpty().withMessage('Username is required.')
     .escape(),
-  body('password')
+  body('pass_word')
     .trim()
     .notEmpty().withMessage('Password is required.'),
 
@@ -49,7 +59,14 @@ exports.postLogin = [
 //handle logout
 exports.logout = (req, res) => {
   req.logout(() => {
-    res.redirect('/admin/login');
+    req.session.destroy((err) => {
+      if (err) {
+        console.error('Session destroy error:', err);
+      }
+      res.clearCookie('connect.sid'); // Poistaa session evästeen selaimesta
+      res.redirect('/admin/login');
+    });
   });
 };
+
 
