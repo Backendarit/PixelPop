@@ -58,9 +58,24 @@ Details on heading structure, color contrast, keyboard navigation, and screen re
 ## Security and Validation
 
 - Form inputs are validated and sanitized using `express-validator`
+- Contact form uses Nodemailer to securely send email messages to the site owner
 - Admin login is protected by Passport.js and server-side sessions
 - Session cookies are secured using `httpOnly`, `secure`, and `sameSite`
-- Contact form uses Nodemailer to securely send email messages to the site owner
+
+By default, session cookies are configured to be secure, meaning they are only sent over HTTPS connections.
+
+Note for local development:
+If you need to test admin login on localhost (which uses HTTP),
+you can temporarily disable the secure setting like this:
+
+cookie: {
+  secure: false,
+  httpOnly: true,
+  sameSite: 'strict',
+  maxAge: 30 * 60 * 1000
+}
+
+Remember to switch secure back to true before deployment or submission.
 
 ## How to use the project
 
