@@ -69,8 +69,8 @@ Details on heading structure, color contrast, keyboard navigation, and screen re
 
 bash
 
-git clone https://github.com/heli23011/wfp2025.git
-cd wfp2025
+git clone https://github.com/Backendarit/PixelPop.git
+cd PixelPop
 
 ### 2. Install dependencies
 
