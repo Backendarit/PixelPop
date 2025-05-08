@@ -68,12 +68,14 @@ Note for local development:
 If you need to test admin login on localhost (which uses HTTP),
 you can temporarily disable the secure setting like this:
 
+```js
 cookie: {
   secure: false,
   httpOnly: true,
   sameSite: 'strict',
   maxAge: 30 * 60 * 1000
 }
+```
 
 Remember to switch secure back to true before deployment or submission.
 
