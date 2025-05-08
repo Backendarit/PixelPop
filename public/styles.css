@@ -567,14 +567,7 @@ button:focus,
 a:focus,
 input:focus,
 select:focus,
-textarea:focus {
-  outline: 3px solid #75004e;
-  outline-offset: 3px;
-  border-radius: 4px;
-  box-shadow: 0 0 10px #f0c;
-}
-
-
+textarea:focus,
 [tabindex="0"]:focus {
   outline: 3px solid #75004e;
   outline-offset: 3px;
@@ -748,6 +741,7 @@ textarea:focus {
     border-radius: 20px;
     background-color: #FBB0DD;
     margin-top: 0;
+    padding: 0.5rem 1rem 0.1rem 1rem;
   }
   
   .contact-form {
