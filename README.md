@@ -98,8 +98,6 @@ GMAIL_USER = youremail@gmail.com
 
 GMAIL_PASS = yourpassword
 
-NODE_ENV=development
-
 ### 4. Run the server
 
 bash

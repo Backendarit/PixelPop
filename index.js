@@ -26,7 +26,7 @@ app.use(session({
   saveUninitialized: false,
     cookie: {
       maxAge: 30 * 60 * 1000,  //session expires after 30 minutes of inactivity
-      secure: process.env.NODE_ENV === 'production', // Only use secure cookies in production
+      secure: true, //cookie is only sent over HTTPS
       httpOnly: true, //cookie cannot be accessed via JavaScript (helps prevent XSS)
       sameSite: 'strict' //cookie is only sent for same-site requests (helps prevent CSRF)
     }
