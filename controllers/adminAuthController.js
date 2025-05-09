@@ -63,7 +63,7 @@ exports.logout = (req, res) => {
       if (err) {
         console.error('Session destroy error:', err);
       }
-      res.clearCookie('connect.sid'); // Poistaa session evästeen selaimesta
+      res.clearCookie('connect.sid');
       res.redirect('/admin/login');
     });
   });

@@ -19,7 +19,11 @@
             <section class="product-list" aria-label="List of all products">
             {{#each products}}
                 <article class="product-card" aria-labelledby="product-{{@index}}">
+                {{#if this.altText}}
+                <img src="{{this.imageUrl}}" alt="{{this.altText}}" class="product-image">
+                {{else}}
                 <img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image">
+                {{/if}}
                  <div class="product-info">
                     <h3 id="product-{{@index}}">{{this.name}}</h3>
                     <p><strong>Price:</strong> {{this.price}} €</p>

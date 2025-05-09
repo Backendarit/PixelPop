@@ -11,7 +11,11 @@ const productSchema = new mongoose.Schema({
     imageUrl: String,
     inStock: { 
         type: Boolean, 
-        default: false }
+        default: false },
+    altText: {
+        type: String,
+        required: true
+             }
 });
 
 module.exports = mongoose.model("Products", productSchema);

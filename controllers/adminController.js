@@ -40,10 +40,12 @@ exports.postAddProduct = [
   body('name').trim().notEmpty().withMessage('Product name required.').escape(),
   body('price').trim().isNumeric().withMessage('Please give a price in numbers only.').escape(),
   body('category').trim().notEmpty().withMessage('Category required.').escape(),
+  body('altText').trim().notEmpty().withMessage('Image description (alt text) is required.').isLength({ max: 100 }).withMessage('Alt text must be 100 characters or less.').escape(),
+
   
   async (req, res) => {
   //get data from the form
-  const { name, price, category } = req.body;
+  const { name, price, category, altText } = req.body;
   const imageUrl = req.file ? '/images/' + req.file.filename : ''; //use multer to get the file name and path
   
   //create a new product with the form data
@@ -52,6 +54,7 @@ exports.postAddProduct = [
     price,
     category,
     imageUrl,
+    altText,
     inStock: req.body.inStock === 'on' // checkbox returns 'on' if checked
   });
 
@@ -114,6 +117,8 @@ exports.postUpdateProduct = [
   // trim whitespaces, check not empty/is numeric, escape for transforming special HTML characters (XSS)
   body('name').trim().notEmpty().withMessage('Product name required.').escape(),
   body('price').trim().isNumeric().withMessage('Please give a number.').escape(),
+  body('altText').trim().notEmpty().withMessage('Image description (alt text) is required.').isLength({ max: 100 }).withMessage('Alt text must be 100 characters or less.').escape(),
+
   
   async (req, res) => {
     // get id from url
@@ -124,6 +129,7 @@ exports.postUpdateProduct = [
     const editedPrice = req.body.price;
     const editedCategory = req.body.category;
     const editedImageUrl = req.file ? '/images/' + req.file.filename : '';
+    const editedAltText = req.body.altText;
     const editedInStock = req.body.inStock === 'on';
     
   // errors from validation
@@ -138,27 +144,60 @@ exports.postUpdateProduct = [
 
     try {
       //save the product to the database
-      if(!editedImageUrl && !editedCategory) {
+      if (!editedImageUrl && !editedCategory) {
         await Product.updateOne(
           { _id: idUpdatingItem },
-          { $set: { name: editedName, price: editedPrice, inStock: editedInStock } }
+          {
+            $set: {
+              name: editedName,
+              price: editedPrice,
+              inStock: editedInStock,
+              altText: editedAltText
+            }
+          }
         );
-      } else if(!editedCategory){
+      } else if (!editedCategory) {
         await Product.updateOne(
           { _id: idUpdatingItem },
-          { $set: { name: editedName, price: editedPrice, imageUrl: editedImageUrl, inStock: editedInStock } }
+          {
+            $set: {
+              name: editedName,
+              price: editedPrice,
+              imageUrl: editedImageUrl,
+              inStock: editedInStock,
+              altText: editedAltText
+            }
+          }
         );
-      } else if(!editedImageUrl){
+      } else if (!editedImageUrl) {
         await Product.updateOne(
           { _id: idUpdatingItem },
-          { $set: { name: editedName, price: editedPrice, category: editedCategory, inStock: editedInStock } }
+          {
+            $set: {
+              name: editedName,
+              price: editedPrice,
+              category: editedCategory,
+              inStock: editedInStock,
+              altText: editedAltText
+            }
+          }
         );
       } else {
         await Product.updateOne(
           { _id: idUpdatingItem },
-          { $set: { name: editedName, price: editedPrice, category: editedCategory, imageUrl: editedImageUrl, inStock: editedInStock } }
+          {
+            $set: {
+              name: editedName,
+              price: editedPrice,
+              category: editedCategory,
+              imageUrl: editedImageUrl,
+              inStock: editedInStock,
+              altText: editedAltText
+            }
+          }
         );
       }
+      
  
     //redirect back to the admin page to see the new product
     const products = await Product.find();

@@ -4,7 +4,11 @@
 <div class="product-list">
   {{#each featured}}
     <article class="product-card" aria-labelledby="product-{{@index}}">
-      <img src="{{this.imageUrl}}" alt="" class="product-image">
+      {{#if this.altText}}
+        <img src="{{this.imageUrl}}" alt="{{this.altText}}" class="product-image">
+      {{else}}
+        <img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image">
+      {{/if}}
       <div class="product-info">
         <h2 id="product-{{@index}}">{{this.name}}</h2>
         <p><strong>Price:</strong> {{this.price}} €</p>
