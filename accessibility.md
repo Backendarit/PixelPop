@@ -18,7 +18,7 @@ Focus styling for keyboard users
 
 We added a focus style to help people see where they are on the page when using the Tab key: 
  
-button:focus, 
+`button:focus, 
 a:focus, 
 input:focus, 
 select:focus, 
@@ -28,21 +28,20 @@ textarea:focus,
   outline-offset: 3px; 
   border-radius: 4px; 
   box-shadow: 0 0 10px #f0c; 
-} 
+} `
 
 Header 
 
 The header uses semantic HTML and aria-label="Main navigation" to support screen reader navigation. 
  
-    <header class="site-header"> 
-      <nav class="main-nav" aria-label="Main navigation"> 
+    `<header class="site-header"> 
+      <nav class="main-nav" aria-label="Main navigation"> `
 
 All the links are clearly labeled so they are easy to understand. A decorative Pixel Heart button triggers sparkles and plays a sound. It includes an aria-label, title, and alt text to ensure it is accessible to users with visual impairments. 
  
-   <button id="heart" class="heart-button"  
-aria-label="Pixel Hearts Sparkle time!" title="Spread some sparkle!"> 
+   `<button id="heart" class="heart-button" aria-label="Pixel Hearts Sparkle time!" title="Spread some sparkle!"> 
     <img src="/images/favicon.png" alt="Pixel Heart" /> 
-   </button> 
+   </button> `
 
 Footer 
 
@@ -56,11 +55,11 @@ If for some reason a product is missing an alt text, the product name is used as
 
 Example in the product list: 
 
-{{#if this.altText}} 
+`{{#if this.altText}} 
   <img src="{{this.imageUrl}}" alt="{{this.altText}}" class="product-image"> 
 {{else}} 
   <img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image"> 
-{{/if}} 
+{{/if}} `
 
 This provides consistent and meaningful image descriptions site-wide. 
 
@@ -68,10 +67,10 @@ Skip to main content button
 
 To improve keyboard navigation and screen reader usability, we added a "Skip to main content" link to every page. This allows users who navigate with a keyboard or screen reader to skip repeated content like the navigation menu and jump directly to the main content area. 
 
-<a href="#main" class="skip-link">Skip to main content</a> 
+`<a href="#main" class="skip-link">Skip to main content</a> 
 <main id="main" class="content"> 
 <!-- Page content --> 
-</main> 
+</main> `
 
 The link is hidden visually but becomes visible when focused (for example, by pressing Tab on the keyboard). 
 
@@ -88,11 +87,11 @@ Product cards include clear headings and structured content for easy comprehensi
 
 In the shop there are three levels of headings h1-h3. There is also a section where you can browse products by category. In that section nav- and a-tags with aria-labels are used to tell users what links are for:  
 
-<a href="/allproducts/findbycategory/?category=phone" aria-label="Phones">Phones</a> 
+`<a href="/allproducts/findbycategory/?category=phone" aria-label="Phones">Phones</a> `
  
 All the images have an alt-attribute which comes from database: 
 
-<img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image"> 
+`<img src="{{this.imageUrl}}" alt="{{this.name}}" class="product-image"> `
  
 Colors and layout are consistent with admin-panels product listing. 
 Headers and content of product cards can be accessed with h- and arrow-keys, links with tab. 
@@ -103,8 +102,8 @@ Visual and semantic page heading
 
 There is a banner image (logadmin.png) on the login page as the visual title of the page. Because screen readers cannot interpret visual meaning, hidden <h1> element was added at the top of the page: 
 
-<h1 class="visually-hidden">Admin Login</h1> 
-<img src="/images/adminlogin_logo.png" alt="" aria-hidden="true" class="login-page-banner"> 
+`<h1 class="visually-hidden">Admin Login</h1> 
+<img src="/images/adminlogin_logo.png" alt="" aria-hidden="true" class="login-page-banner"> `
 
 This means that the sighted users see a styled image as the page heading while screen reader users detect a proper heading element. The image itself is marked with aria-hidden="true" and an empty alt attribute to make sure assistive technologies skip it. 
 
@@ -112,11 +111,11 @@ Proper labeling of form fields
 
 All input fields (username and password) are explicitly associated with labels, even if the labels are visually hidden: 
 
-<label for="username" class="visually-hidden">Username</label> 
+`<label for="username" class="visually-hidden">Username</label> 
 <input id="username" name="username" ...> 
 
 <label for="password" class="visually-hidden">Password</label> 
-<input id="password" name="password" ...> 
+<input id="password" name="password" ...> `
 
 This ensures that the screen readers can announce the input’s purpose correctly. Even though placeholder text is present, relying on placeholders alone is not sufficient for accessibility which is why proper <label> elements are included. 
 
@@ -124,7 +123,7 @@ Input icons marked decorative
 
 In our login form, we added small icons (like file and lock icons) inside the input fields. Because they are only decorative and don’t give important information, we added aria-hidden="true" and left out the alt text. This way, screen readers skip them and don’t read anything unnecessary. 
 
-<img src="/images/locklogo.png" alt="" aria-hidden="true" class="input-icon-inside"> 
+`<img src="/images/locklogo.png" alt="" aria-hidden="true" class="input-icon-inside">`
 
 ##Accessibility in admin page 
 
@@ -132,9 +131,9 @@ Visual and semantic page heading
 
 The admin page uses an image (admin_panel.png) as the visual title. To ensure that screen reader users also receive a correctly structured heading, a visually hidden <h1> was added at the top of the page: 
 
-<h1 class="visually-hidden">Admin Panel</h1> 
+`<h1 class="visually-hidden">Admin Panel</h1> 
 
-<img src="/images/admin_panel.png" alt="" aria-hidden="true" class="admin-image"> 
+<img src="/images/admin_panel.png" alt="" aria-hidden="true" class="admin-image"> `
  
 The image is marked as decorative with aria-hidden=”true” and an empty alt attribute to make sure assistive technologies skip it. 
 
@@ -142,41 +141,41 @@ Form accessibility
 
 The form for adding new products includes several fields (name, price, category, image, stock availability)- Each field is labeled properly even if some of the labels are visually hidden. This guarantees that screen readers can announce each field’s purpose.  
 
-<label for="name" class="visually-hidden">Product name</label> 
+`<label for="name" class="visually-hidden">Product name</label> 
 <input id="name" name="name" type="text" placeholder="Product name" required> 
 
 <label for="price" class="visually-hidden">Price</label> 
-<input id="price" name="price" type="number" placeholder="Price" required> 
+<input id="price" name="price" type="number" placeholder="Price" required> `
  
 For the category <select> we use an aria-label to provide a meaningful description: 
 
-<select id="category" name="category" required aria-label="Choose product category"> 
-  <option value="">Choose a category</option> 
+`<select id="category" name="category" required aria-label="Choose product category"> `
+  `<option value="">Choose a category</option>`
   ... 
-</select> 
+`</select>`
  
 The file upload and checkbox are labeled visibly for clarity: 
 
-<label for="productImage" class="file-label">Product image</label> 
-<label for="inStock">Available in stock</label> 
+`<label for="productImage" class="file-label">Product image</label> 
+<label for="inStock">Available in stock</label> `
  
 Product list and actions 
 
 Below the form the page displays a list of products. Each product is inside an <article> element and uses aria-labelledby to associate the container with the product’s name: 
 
-<article class="product-card" aria-labelledby="product-0"> 
-  <h3 id="product-0">Product Name</h3> 
+`<article class="product-card" aria-labelledby="product-0"> `
+ ` <h3 id="product-0">Product Name</h3>` 
  
 This allows screen reader users to quickly identify each item. Action buttons such as Edit and Delete have aria-labels that describe their purpose: 
 
-<a href="/admin/edit/..." aria-label="Edit product Product Name">Edit</a> 
-<button aria-label="Delete product Product Name">Delete</button> 
+`<a href="/admin/edit/..." aria-label="Edit product Product Name">Edit</a> `
+`<button aria-label="Delete product Product Name">Delete</button> `
 
 Stats 
 
 Pixel Heart Stats Box, KuvaFor sighted users, it’s easy to visually associate the Pixel Heart button in the header with the Stats Pixel Heart image, but for users with visual impairments, this connection is explained more clearly through accessible text. The heart icon includes a descriptive alt text ("Pixel Heart"), and additional context is provided via visually hidden text: 
  
- <p class="visually-hidden">This shows how many times the heart button has been pressed.</p> 
+ `<p class="visually-hidden">This shows how many times the heart button has been pressed.</p>` 
  
 This ensures screen reader users also understand the purpose of the stats without adding visual clutter. 
  
@@ -184,13 +183,13 @@ This ensures screen reader users also understand the purpose of the stats withou
 
 The contact page uses clear structure and accessibility features to help all users, including those using screen readers or keyboards. The main section has a heading connected with aria-labelledby="contact-title", making it easier to understand the page layout. 
 
-<div class="contact-container" role="region" aria-labelledby="contact-title"> 
- <h1 class="contact-title" id="contact-title" >Contact Us</h1> 
+`<div class="contact-container" role="region" aria-labelledby="contact-title">` 
+`<h1 class="contact-title" id="contact-title" >Contact Us</h1>` 
  
 Success and error messages are announced automatically using role="status" and role="alert", so users get feedback right away. All form fields have hidden labels for screen reader users, while placeholders help sighted users. Required fields ensure proper form submission for everyone. 
 
-    <label for="name" class="visually-hidden">Name</label> 
-    <input id="name" name="name" placeholder="Name" type="text" required value="{{formData.name}}"> 
+    `<label for="name" class="visually-hidden">Name</label> `
+    `<input id="name" name="name" placeholder="Name" type="text" required value="{{formData.name}}">` 
  
 The contact section groups information like email and social media using role="group" and descriptive aria-labels. Icons are marked as decorative with aria-hidden="true" so they don’t distract assistive technology. 
 
@@ -198,9 +197,9 @@ The contact section groups information like email and social media using role="g
 
 The 404 page uses clear semantic structure with a heading (<h1>) to inform users of the error. The animated element includes role and a descriptive aria-label, making the visual content accessible to screen reader users.  
 
- role="img" 
+` role="img" ` 
 
-aria-label="Animated purple pixel creature jumps across 404 numbers and cacti, hitting boxes that release coins, in a retro game style." 
+`aria-label="Animated purple pixel creature jumps across 404 numbers and cacti, hitting boxes that release coins, in a retro game style." `
  
 The “Home” link uses aria-label="Go to Homepage" for clarity and role="button" to communicate its interactive nature visually and semantically. These enhancements help both screen reader users and keyboard navigators understand the page’s purpose more easily. 
 
