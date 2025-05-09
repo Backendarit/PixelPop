@@ -1,18 +1,18 @@
-Pixel Pop 
+#Pixel Pop 
 
 Maisa Tuomenpuro, Henna-Riina Anttila, Heli Pyykkönen 
 
-Accessibility issues in the planning phase  
+##Accessibility issues in the planning phase  
 
 We started to plan our website layout in Figma. During the layout planning process we took the contrast between different colors, usage of semantic HTML, headings and alt attributes for all pictures into consideration from the beginning. We discussed whether the color contrasts were strong enough and agreed that accessibility is more important than visual style if a conflict arises. We wanted a clear and loose appearance with bright colors and with good contrast, and we checked that the color combinations used in the design meet contrast requirements. 
 
-Accessibility issues during implementation 
+##Accessibility issues during implementation 
 
 During implementation, one of the main issues we discussed was how to mark an image that visually acts as a page heading. On the admin login and admin panel pages, we use banner images that include text and serve as the main title for the page. 
 We considered different options and decided to add a visually hidden <h1> element before the image for screen reader users. The image itself was marked with alt="" and aria-hidden="true", since the text content is already provided in the hidden heading. This ensures that screen readers will announce the page title correctly without repeating or reading decorative content unnecessarily. 
 We initially struggled to navigate the site using a screen reader and keyboard, especially without visible focus indicators or prior experience. At first, we considered adding tabindex="0" to many elements just to make them keyboard-focusable and easier to follow visually. However, we later realized that tabindex should be used only on interactive elements for proper semantic structure. 
 
-General accessibility features across the website 
+##General accessibility features across the website 
 
 Focus styling for keyboard users 
 
@@ -79,12 +79,12 @@ Color contrast
 
 We used the WebAIM Contrast Checker and Siteimprove Accessibility Checker to review and adjust color contrast on our site. These tools helped us identify text and background color combinations that didn’t meet accessibility standards. Our goal was to ensure a contrast ratio above 6.0 across the site, which goes beyond the WCAG AA requirement (4.5:1) and moves toward AAA-level readability. 
 
-Accessibility in home page 
+##Accessibility in home page 
 
 The home page uses semantic HTML elements such as <header>, <nav>, <main>, and <footer> to support screen reader navigation and logical page structure.  
 Product cards include clear headings and structured content for easy comprehension. "Shop" link is clearly labeled without redundant ARIA attributes.  
  
-Accessibility in shop 
+##Accessibility in shop 
 
 In the shop there are three levels of headings h1-h3. There is also a section where you can browse products by category. In that section nav- and a-tags with aria-labels are used to tell users what links are for:  
 
@@ -97,7 +97,7 @@ All the images have an alt-attribute which comes from database:
 Colors and layout are consistent with admin-panels product listing. 
 Headers and content of product cards can be accessed with h- and arrow-keys, links with tab. 
 
-Accessibility in admin login page 
+##Accessibility in admin login page 
 
 Visual and semantic page heading 
 
@@ -126,7 +126,7 @@ In our login form, we added small icons (like file and lock icons) inside the in
 
 <img src="/images/locklogo.png" alt="" aria-hidden="true" class="input-icon-inside"> 
 
-Accessibility in admin page 
+##Accessibility in admin page 
 
 Visual and semantic page heading 
 
@@ -180,7 +180,7 @@ Pixel Heart Stats Box, KuvaFor sighted users, it’s easy to visually associate 
  
 This ensures screen reader users also understand the purpose of the stats without adding visual clutter. 
  
-Accessibility in Contact page 
+##Accessibility in Contact page 
 
 The contact page uses clear structure and accessibility features to help all users, including those using screen readers or keyboards. The main section has a heading connected with aria-labelledby="contact-title", making it easier to understand the page layout. 
 
@@ -194,7 +194,7 @@ Success and error messages are announced automatically using role="status" and r
  
 The contact section groups information like email and social media using role="group" and descriptive aria-labels. Icons are marked as decorative with aria-hidden="true" so they don’t distract assistive technology. 
 
-Accessibility in 404 page 
+##Accessibility in 404 page 
 
 The 404 page uses clear semantic structure with a heading (<h1>) to inform users of the error. The animated element includes role and a descriptive aria-label, making the visual content accessible to screen reader users.  
 
@@ -204,7 +204,7 @@ aria-label="Animated purple pixel creature jumps across 404 numbers and cacti, h
  
 The “Home” link uses aria-label="Go to Homepage" for clarity and role="button" to communicate its interactive nature visually and semantically. These enhancements help both screen reader users and keyboard navigators understand the page’s purpose more easily. 
 
-Evaluation tools 
+##Evaluation tools 
 
 To test the accessibility of our project, we used the following tools: 
 WAVE Evaluation Tool (Chrome extension) 
@@ -218,12 +218,12 @@ For checking color contrast more precisely we used the WebAIM Contrast Checker. 
 Siteimprove Accessibility Checker helped us identify incorrect or unnecessary ARIA attributes, missing alt texts, and mismatched labels. It also provided suggestions for meeting the AAA standard. For example, it alerted us when aria-labelledby was used incorrectly on non-semantic elements, which led us to simplify the structure and remove unnecessary roles. It also helped us align visible labels with accessible names. To fully meet WCAG AAA standards, we would need to make header links at least 45x45 pixels, use larger and relative font sizes, and increase some color contrasts to a ratio above 7.0. 
 We also used the NVDA screen reader to test keyboard navigation and how the site content is announced to visually impaired users. We checked that all interactive elements were reachable with the keyboard, form fields had proper labels, and headings were read in a meaningful order. 
 
-GitHub and Azure 
+##GitHub and Azure 
 
 UI design and laout planning was done in Figma: https://github.com/Backendarit/PixelPop/blob/main/accessibility.md 
 Live site: https://pixelpop.azurewebsites.net/ 
 
-Responsibilities 
+##Responsibilities 
 
 Heli was responsible for the Shop page’s product listing with different categories, admin page’s update-form for products and footer. 
 Henna-Riina was responsible for implementing accessibility features in the Admin login page (including form accessibility, heading structure and decorative input icons with proper aria attributes), Admin page (including the “Add new product” form and the product list. She also made the skip to main content button and implemented custom focus outlines for keyboard users. 
